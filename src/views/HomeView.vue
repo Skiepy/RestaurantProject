@@ -19,14 +19,28 @@
         placeat tenetur nobis sequi excepturi. Corrupti molestiae dolore dolorem delectus unde, nam alias repellat
         dolores!</p>
       <div id="carrousel">
-        <img src="@/assets/logo.png" alt="">
-        <img src="@/assets/logo.png" alt="">
-        <img src="@/assets/logo.png" alt="">
+        
       </div>
+      <section>
+        <div class="container reveal fade-bottom">
+          <h2>Enjoy our meals</h2>
+          <div class="text-container">
+            <div class="text-box">
+              <img src="@/assets/logo.png" alt="">
+            </div>
+            <div class="text-box">
+              <img src="@/assets/logo.png" alt="">
+            </div>
+            <div class="text-box">
+              <img src="@/assets/logo.png" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
 
- 
+
     <MyFooter></MyFooter>
   </div>
 </template>
@@ -81,13 +95,14 @@ body {
   padding-right: 200px;
 }
 
-#SecDiv{
-  padding-top: 200px;
-  padding-bottom: 200px;
+#SecDiv {
+  padding-top: 250px;
+  padding-bottom: 250px;
   height: 500px;
   background-color: lightgreen;
 }
-#SecDiv p{
+
+#SecDiv p {
   padding-left: 463px;
   padding-right: 200px;
 }
@@ -100,4 +115,91 @@ body {
   display: block;
 }
 
+section .container {
+  margin: 100px;
+}
+
+section h2 {
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+section .text-container {
+  display: flex;
+}
+
+section .text-container .text-box {
+  margin: 20px;
+  padding: 20px;
+}
+
+
+@media (max-width: 900px) {
+  section h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  section .text-container {
+    flex-direction: column;
+  }
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.active.fade-bottom {
+  animation: fade-bottom 1s ease-in;
+}
+
+.active.fade-left {
+  animation: fade-left 1s ease-in;
+}
+
+.active.fade-right {
+  animation: fade-right 1s ease-in;
+}
+
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 </style>
