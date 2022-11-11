@@ -44,6 +44,7 @@ export default {
         // Create New user
         async createUser() {
             if (this.password == this.password2) {
+                // Verifier que le mail n'est pas déjà utilisé
                 try {
                     await axios.post("http://localhost:5000/users", {
                         email: this.email,
