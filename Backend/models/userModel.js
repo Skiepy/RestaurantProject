@@ -1,8 +1,8 @@
 // Import connection
 import db from "../config/database.js";
 
-// Get ALL products
-export const getProducts = (result) => {
+// Get ALL users
+export const getUsers = (result) => {
     db.query("SELECT * FROM dbresto.users", (err, results) => {
         if (err) {
             console.log(err);
@@ -13,8 +13,8 @@ export const getProducts = (result) => {
     });
 }
 
-// Get single product
-export const getProductById = (id, result) => {
+// Get single user
+export const getUserById = (id, result) => {
     db.query("SELECT * FROM dbresto.users WHERE users_id = ?", [id], (err, results) => {
         if (err) {
             console.log(err);
@@ -25,8 +25,8 @@ export const getProductById = (id, result) => {
     });
 }
 
-// Insert product in the database
-export const insertProduct = (data, result) => {
+// Insert user in the database
+export const insertUser = (data, result) => {
     db.query("INSERT INTO dbresto.users SET ?", [data], (err, results) => {
         if (err) {
             console.log(err);
@@ -37,10 +37,10 @@ export const insertProduct = (data, result) => {
     });
 }
 
-// Update Product to Database
+// Update user to Database
 // A REFAIRE EN FONCTION DE LA TABLE
-export const updateProductById = (data, id, result) => {
-    db.query("UPDATE dbresto.users SET product_name = ?, product_price = ? WHERE users_id = ?", [data.product_name, data.product_price, id], (err, results) => {             
+export const updateUserById = (data, id, result) => {
+    db.query("UPDATE dbresto.users SET email = ?, password = ?, firstname = ?, lastname = ? WHERE users_id = ?", [data.email, data.password, data.firstname, data.lastname, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -50,8 +50,8 @@ export const updateProductById = (data, id, result) => {
     });   
 }
  
-// Delete Product to Database
-export const deleteProductById = (id, result) => {
+// Delete user to Database
+export const deleteUserById = (id, result) => {
     db.query("DELETE FROM dbresto.users WHERE users_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
