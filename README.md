@@ -1,5 +1,5 @@
 # RestaurantProject
-## Project setup
+## Project run
 ```
 > cd Backend
 > node index
@@ -7,6 +7,7 @@
 > cd Frontend
 > npm run serve
 ```
+#### Do not forget to change the connection information to the database
 
 ### Created by
 Angèle BLAIS, Hugo BERGER and Yansi MILLIER 
