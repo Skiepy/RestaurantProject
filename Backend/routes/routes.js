@@ -2,7 +2,7 @@
 import express from "express";
  
 // import function from controller
-import { showUsers, showUserById, createUser, updateUser, deleteUser } from "../controllers/user.js";
+import { showUsers, showUserById, showPasswordByEmail, createUser, updateUser, deleteUser } from "../controllers/user.js";
  
 // init express router
 const router = express.Router();
@@ -12,7 +12,10 @@ router.get('/users', showUsers);
  
 // Get Single User
 router.get('/users/:id', showUserById);
- 
+
+// Get user by email
+router.get('users/:email', showUserByEmail);
+
 // Create New User
 router.post('/users', createUser);
  

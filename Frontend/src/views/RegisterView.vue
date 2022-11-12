@@ -37,25 +37,36 @@ export default {
         return {
             email: "",
             password: "",
-            password2: ""
+            password2: "",
+            items: [],
         };
     },
     methods: {
         // Create New user
         async createUser() {
-            if (this.password == this.password2) {
-                // Verifier que le mail n'est pas déjà utilisé
+            if ((this.password === this.password2) && (this.password != "") && (this.email != "")) {
+                var alreadyUsed = false;
                 try {
-                    await axios.post("http://localhost:5000/users", {
-                        email: this.email,
-                        password: this.password
-                    });
-                    this.email = "";
-                    this.password = "";
-                    this.password2 = "";
-                    this.$router.push("/login");
-                } catch (err) {
-                    console.log(err);
+                    const response = await axios.get(`http://localhost:5000/users/`);
+                    this.items = response.data;
+                    for (let index = 0; index < this.items.length; index++) {
+                        if (this.email === this.items[index].email) {
+                            alert("This email is already used.");
+                            alreadyUsed = true;
+                        }
+                    }
+                    if (!alreadyUsed) {
+                        await axios.post("http://localhost:5000/users", {
+                            email: this.email,
+                            password: this.password
+                        });
+                        this.email = "";
+                        this.password = "";
+                        this.password2 = "";
+                        this.$router.push("/login");
+                    }
+                } catch (error) {
+                    console.log(error);
                 }
             } else {
                 alert("Please verify your informations.")
