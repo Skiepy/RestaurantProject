@@ -15,7 +15,7 @@
         </div>
 
         <div class="control">
-            <button class="button is-success" @click="connection">Register</button>
+            <button class="button is-success" @click="connection">Login</button>
         </div>
     </div>
 </template>
@@ -25,31 +25,38 @@
 import axios from "axios";
 
 export default {
-    name: "AddUser",
     data() {
         return {
             email: "",
-            password: ""
+            password: "",
+            hash: "",
+            items: [],
         };
     },
     methods: {
         // Connect to the website
         async connection() {
-            
-
-
-
-
-            if (this.password == this.password2) {
+            if (this.password != "" && this.email != "") {
                 try {
-                    await axios.post("http://localhost:5000/users", {
-                        email: this.email,
-                        password: this.password
-                    });
+                    var testPassword = false;
+                    const response = await axios.get(`http://localhost:5000/users/`);
+                    this.items = response.data;
+                    for (let index = 0; index < this.items.length; index++) {
+                        if (this.email === this.items[index].email) {
+                            testPassword = await axios.post("http://localhost:5000/users/login", {
+                                password: this.password,
+                                hashed: this.items[index].password
+                            });
+                        }
+                    }
                     this.email = "";
                     this.password = "";
-                    this.password2 = "";
-                    this.$router.push("/login");
+                    this.hash = "";
+                    if (!testPassword.data) {
+                        alert("Wrong email or password.");
+                    } else {
+                        this.$router.push("/");
+                    }
                 } catch (err) {
                     console.log(err);
                 }

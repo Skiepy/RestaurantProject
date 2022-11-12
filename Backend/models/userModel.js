@@ -2,7 +2,7 @@
 import db from "../config/database.js";
 
 // Import bcrypt
-import bcrypt from "bcrypt";
+import bcrypt, { hash } from "bcrypt";
 
 // Get ALL users
 export const getUsers = (result) => {
@@ -24,18 +24,6 @@ export const getUserById = (id, result) => {
             result(err, null);
         } else {
             result(null, results[0]);
-        }
-    });
-}
-
-// Get user's password
-export const getLogged = (email, result) => {
-    db.query("SELECT password FROM dbresto.users WHERE email = ?", email, (err, results) => {
-        if (err) {
-            console.log(err);
-            result(err, null);
-        } else {
-            result(null, results);
         }
     });
 }
