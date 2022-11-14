@@ -16,12 +16,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>@import "compass/css3";
-
-@import "compass/css3";
-@import "compass/reset";
-
-
+<style scoped>
 header{
   width: 100%;
   height: 300px;
