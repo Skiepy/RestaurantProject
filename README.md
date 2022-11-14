@@ -1,24 +1,15 @@
-# resto
+# RestaurantProject
+## Project run
+```
+> cd Backend
+> node index
+> cd ..
+> cd Frontend
+> npm run serve
+```
+#### Do not forget to change the connection information to the database
 
-## Project setup
-```
-npm install
-```
+### Created by
+Angèle BLAIS, Hugo BERGER and Yansi MILLIER 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+In Cape Town, november 2022.
