@@ -47,6 +47,11 @@ export default {
                                 password: this.password,
                                 hashed: this.items[index].password
                             });
+                            await axios.put(`http://localhost:5000/users/${this.items[index].users_id}`, {
+                                email: this.items[index].email,
+                                password : this.items[index].password,
+                                isLogged : true
+                            });
                         }
                     }
                     this.email = "";
@@ -61,7 +66,7 @@ export default {
                     console.log(err);
                 }
             } else {
-                alert("Please verify your informations.")
+                alert("Please verify your informations.");
             }
         },
     },
