@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="login">
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
@@ -31,6 +31,7 @@ export default {
             password: "",
             hash: "",
             items: [],
+            id: ""
         };
     },
     methods: {
@@ -52,6 +53,7 @@ export default {
                                 password: this.items[index].password,
                                 isLogged: true
                             });
+                            this.id = this.items[index].users_id;
                         }
                     }
                     this.email = "";

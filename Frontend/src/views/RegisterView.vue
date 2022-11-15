@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="register">
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
