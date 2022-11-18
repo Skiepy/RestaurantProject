@@ -11,7 +11,7 @@
         <div v-if="nbReservations > 0">
             <label v-if="nbReservations == 1">Your booking</label>
             <label v-if="nbReservations > 1">Your bookings</label>
-            <div v-for="resa in nbReservations"></div>
+            <!-- Avec un v-for faire apparaitre toutes les résas -->
         </div>
     </div>
 </template>
