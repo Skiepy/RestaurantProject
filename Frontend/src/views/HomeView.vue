@@ -29,13 +29,13 @@
           <h2>Enjoy our meals</h2>
           <div class="text-container">
             <div class="text-box">
-              <img src="@/assets/logo.png" alt="">
+              <img src="" alt="">
             </div>
             <div class="text-box">
-              <img src="@/assets/logo.png" alt="">
+              <img src="" alt="">
             </div>
             <div class="text-box">
-              <img src="@/assets/logo.png" alt="">
+              <img src="" alt="">
             </div>
           </div>
         </div>
