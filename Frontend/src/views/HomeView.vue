@@ -77,8 +77,6 @@ body {
   z-index: -1;
 }
 
-#FirstDiv {}
-
 #name {
   margin: 0;
 

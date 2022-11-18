@@ -49,7 +49,7 @@ export const insertUser = async (data, result) => {
 // Update user to Database
 // A REFAIRE EN FONCTION DE LA TABLE
 export const updateUserById = (data, id, result) => {
-    db.query("UPDATE dbresto.users SET email = ?, password = ?, firstname = ?, lastname = ?, isLogged = ? WHERE users_id = ?", [data.email, data.password, data.firstname, data.lastname, data.isLogged, id], (err, results) => {
+    db.query("UPDATE dbresto.users SET email = ?, password = ?, firstname = ?, lastname = ? WHERE users_id = ?", [data.email, data.password, data.firstname, data.lastname, id], (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);

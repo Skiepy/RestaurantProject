@@ -19,19 +19,19 @@ const routes = [
     path: '/register',
     name: 'register',
 
-    component: () => import('../views/RegisterView.vue')
+    component: () => import('../components/MyRegister.vue')
   },
   {
     path: '/login',
     name: 'login',
 
-    component: () => import('../views/LoginView.vue')
+    component: () => import('../components/MyLogin.vue')
   },
   {
     path: '/booking',
     name: 'booking',
 
-    component: () => import('../views/BookingView.vue')
+    component: () => import('../components/MyBooking.vue')
   }
 ]
 
