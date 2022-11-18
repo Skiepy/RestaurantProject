@@ -19,11 +19,10 @@
 <style scoped>
 header{
   width: 100%;
-  height: 300px;
+  height: 100px;
   background-color:#dbb172;
   text-align: center;
   position: relative;
-  position: fixed;
   top: 0;
   overflow: hidden;
 }
@@ -45,12 +44,6 @@ nav{
   background-color: #dbb172;
   color: #1E3551;
 }
-
-header{
-  height: 100px;
-  background-color: #dbb172;
-}
-
 image{
   height: 20px;
   padding-top: 10px;
