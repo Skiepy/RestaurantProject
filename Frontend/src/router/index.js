@@ -32,6 +32,12 @@ const routes = [
     name: 'booking',
 
     component: () => import('../components/MyBooking.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+
+    component: () => import('../views/ProfileView.vue')
   }
 ]
 

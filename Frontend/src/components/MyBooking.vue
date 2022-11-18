@@ -1,5 +1,7 @@
 <template>
     <div class="booking">
+        <label class="labelTitle">Booking</label>
+        <button class="button register" @click="logOut">Log Out</button>
         <div class="field">
             <label class="label">Name</label>
             <div class="control">
@@ -146,6 +148,9 @@ export default {
         };
     },
     methods: {
+        logOut(){
+            this.$emit('connected', 0);
+        }
     }
 };
 </script>

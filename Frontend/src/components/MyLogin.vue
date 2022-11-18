@@ -1,5 +1,7 @@
 <template>
     <div class="login">
+        <label class="labelTitle">Login</label>
+        <button class="button register" @click="goToRegister">Register</button>
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
@@ -47,6 +49,8 @@ export default {
                                 password: this.password,
                                 hashed: this.items[index].password
                             });
+                            this.$emit('connected', 1);
+                            this.$emit('id', this.items[index].users_id);
                         }
                     }
                     this.email = "";
@@ -55,7 +59,7 @@ export default {
                     if (!testPassword.data) {
                         alert("Wrong email or password.");
                     } else {
-                        this.$router.push("/");
+                        this.$router.push("/profile");
                     }
                 } catch (err) {
                     console.log(err);
@@ -64,6 +68,10 @@ export default {
                 alert("Please verify your informations.");
             }
         },
+
+        goToRegister(){
+            this.$router.push("/register");
+        }
     },
 };
 </script>

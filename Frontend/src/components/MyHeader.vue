@@ -1,7 +1,7 @@
 <template>
     <header>
     <h1>AU MANOIR SALE</h1>
-    <img src="manoir_logo.jpg" alt="logo">
+    <img src="@/assets/manoir_logo.png" alt="lo" id="logo">
     <nav>
       <router-link to="/">HOME  </router-link> |
       <router-link to="/">ABOUT  </router-link> |
@@ -19,8 +19,8 @@
 <style scoped>
 header{
   width: 100%;
-  height: 100px;
-  background-color:#dbb172;
+  height: 200px;
+  background-color: white;
   text-align: center;
   position: relative;
   top: 0;
@@ -41,12 +41,27 @@ nav{
   height: 60px;
   line-height: 10px;
   width: 100%;
-  background-color: #dbb172;
-  color: #1E3551;
+  background-color: white;
+  color: white;
 }
-image{
-  height: 20px;
+
+#logo{
+  bottom: 0;
+  margin-left: 40px;
+  margin-bottom: 50px;
+  width: auto;
+  max-height: 40%;
+  float: left;  
+  display: block;
+}
+
+
+/* image{
+  position: absolute;
+  width: 100%;
+  height: 100px;
   padding-top: 10px;
   padding-right: 50px ;
-}
+  line-height: 40px;
+} */
 </style>

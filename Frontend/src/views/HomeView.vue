@@ -6,7 +6,7 @@
         <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
       </video>
       <h1 id="name">Le Manoir Salé</h1>
-      <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+      <p id="text">LOREM DOLOR ULLAMCO, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
         ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
         nulla pariatur.</p>
@@ -64,6 +64,8 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+@import url('//db.onlinewebfonts.com/c/158d85dc0d6cc6d89eff0cdf2f1d53bd?family=K2D+ExtraBold');
+@import url('http://fonts.googleapis.com/css?family=Roboto');
 
 body {
   margin: 0;
@@ -84,17 +86,17 @@ body {
   text-align: center;
   padding-top: 20px;
   color: white;
-  font-family: 'Tangerine', cursive;
+  font-family: K2D;
   font-size: 100px;
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 #text {
-  text-align: center;
-  color: white;
+  text-align: justify;
+  color:#f4f4f1;
   text-shadow: 1px 1px 2px black;
-  font-family: 'Tangerine', cursive;
-  font-size: 50px;
+  font-family: Roboto;
+  font-size: 40px;
   padding-left: 200px;
   padding-right: 200px;
   padding-top: 40px;
@@ -105,7 +107,9 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   height: 500px;
-  background-color: lightgreen;
+  background-color: #1E3551;
+  color: #f4f4f1;
+  font-family: Roboto;
 }
 
 #SecDiv p {
@@ -208,4 +212,5 @@ section .text-container .text-box {
     opacity: 1;
   }
 }
+
 </style>

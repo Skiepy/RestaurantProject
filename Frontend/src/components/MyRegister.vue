@@ -1,5 +1,7 @@
 <template>
     <div class="register">
+        <label class="labelTitle">Login</label>
+        <button class="button register" @click="goToLogin">Login</button>
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
@@ -71,6 +73,10 @@ export default {
                 alert("Please verify your informations.")
             }
         },
+
+        goToLogin() {
+            this.$router.push("/profile");
+        }
     },
 };
 </script>
