@@ -61,8 +61,8 @@
 
 .footer-clean {
   padding:50px 0;
-  background-color:rgb(206, 184, 161);
-  color:#4b4c4d;
+  background-color:#dbb172;
+  color: #1E3551;
 }
 
 .footer-clean h3 {
