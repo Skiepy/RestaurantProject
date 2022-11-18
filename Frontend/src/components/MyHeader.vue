@@ -15,10 +15,7 @@
    name: 'MyHeader'}
 </script>
 
-<<<<<<< Updated upstream
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-=======
->>>>>>> Stashed changes
 <style scoped>
 header{
   width: 100%;

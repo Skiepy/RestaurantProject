@@ -2,6 +2,9 @@
   <div class="homePage">
     <MyHeader></MyHeader>
     <div id="FirstDiv">
+      <video autoplay muted loop plays-inline id="myVideo" class="back-video">
+        <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
+      </video>
       <h1 id="name">Le Manoir Salé</h1>
       <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -19,7 +22,7 @@
         placeat tenetur nobis sequi excepturi. Corrupti molestiae dolore dolorem delectus unde, nam alias repellat
         dolores!</p>
       <div id="carrousel">
-        
+
       </div>
       <section>
         <div class="container reveal fade-bottom">
@@ -67,19 +70,21 @@ body {
   padding: 0;
 }
 
-#FirstDiv {
-  background-image: url(@/assets/temp3.jpg);
-  min-height: 1000px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.back-video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
+
+#FirstDiv {}
 
 #name {
   margin: 0;
+
+  text-shadow: 1px 1px 2px black;
   text-align: center;
-  padding-top: 300px;
+  padding-top: 20px;
   color: white;
   font-family: 'Tangerine', cursive;
   font-size: 100px;
@@ -89,15 +94,18 @@ body {
 #text {
   text-align: center;
   color: white;
+  text-shadow: 1px 1px 2px black;
   font-family: 'Tangerine', cursive;
   font-size: 50px;
   padding-left: 200px;
   padding-right: 200px;
+  padding-top: 40px;
+  padding-bottom: 180px;
 }
 
 #SecDiv {
-  padding-top: 250px;
-  padding-bottom: 250px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   height: 500px;
   background-color: lightgreen;
 }
