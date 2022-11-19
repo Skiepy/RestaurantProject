@@ -25,7 +25,7 @@
       <section>
         <div class="container reveal fade-bottom">
           <img src="@/assets/plat1.jpg" alt="" id="plat1">
-          <img src="@/assets/plat2.jpg" alt="" id="plat2">
+          <img src="@/assets/poisson.png" alt="" id="plat2">
           <img src="@/assets/plat3.jpg" alt="" id="plat3">
           <h2>Enjoy our meals</h2>
           <div class="text-container">
@@ -221,7 +221,7 @@ section .text-container .text-box {
 #plat2 {
   margin-left: 50px;
   width: 30%;
-  max-height: 30%;
+  max-height: 100%;
   float: left;
   display: block;
 }
