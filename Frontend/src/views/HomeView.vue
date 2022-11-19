@@ -5,7 +5,7 @@
       <video autoplay muted loop plays-inline id="myVideo" class="back-video">
         <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
       </video>
-      <p id="text">LOREM DOLOR ULLAMCO, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+      <p id="BigText">LOREM DOLOR ULLAMCO, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
         ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
         nulla pariatur.</p>
@@ -24,9 +24,33 @@
       </div>
       <section>
         <div class="container reveal fade-bottom">
-          <img src="@/assets/plat1.jpg" alt="" id="plat1">
-          <img src="@/assets/poisson.png" alt="" id="plat2">
-          <img src="@/assets/plat3.jpg" alt="" id="plat3">
+          <div class="slideshow-container">
+
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="main.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="plat_rouge.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="poisson.png" style="width:100%">
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+          <br>
+
+          <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
           <h2>Enjoy our meals</h2>
           <div class="text-container">
             <div class="text-box">
@@ -50,12 +74,14 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import MyHeader from '@/components/MyHeader.vue';
 import MyFooter from '@/components/MyFooter.vue';
 
 export default {
   name: 'HomeView',
+  methods : {
+
+  },
   components: {
     MyHeader,
     MyFooter
@@ -66,7 +92,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('//db.onlinewebfonts.com/c/158d85dc0d6cc6d89eff0cdf2f1d53bd?family=K2D+ExtraBold');
-@import url('http://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url('https://fonts.cdnfonts.com/css/source-sans-pro');
 
 body {
@@ -81,9 +107,16 @@ body {
   z-index: -1;
 }
 
+#plat2 {
+  margin-left: 50px;
+  width: 30%;
+  max-height: 100%;
+  float: left;
+  display: block;
+}
+
 #name {
   margin: 0;
-
   text-shadow: 1px 1px 2px black;
   text-align: center;
   padding-top: 20px;
@@ -93,16 +126,33 @@ body {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-#text {
+#BigText{
+  font-family: 'Bebas Neue', cursive;
   text-align: justify;
   color:#f4f4f1;
-  font-family: 'Bebas Neue', cursive;
+  padding : 100px;
   font-size: 50px;
-  padding-left: 200px;
-  padding-right: 200px;
-  padding-top: 40px;
-  padding-bottom: 180px;
 }
+
+#BigTextYellow{
+  font-family: 'Bebas Neue', cursive;
+  text-align: justify;
+  color:#dbb172;
+  padding : 100px;
+  font-size: 50px;
+}
+
+#MiddleText{
+  text-align: justify;
+  color:#f4f4f1;
+  padding : 100px;
+  font-size: 30px;
+}
+
+#SmallText{
+
+}
+
 
 #SecDiv {
   padding-top: 40px;
@@ -110,7 +160,8 @@ body {
   height: 500px;
   background-color: #1E3551;
   color: #f4f4f1;
-  font-family: Roboto;
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 #SecDiv p {
@@ -129,6 +180,9 @@ body {
   float: left;
   display: block;
 }
+
+
+
 
 section .container {
   margin: 100px;
@@ -218,51 +272,81 @@ section .text-container .text-box {
   }
 }
 
-#plat2 {
-  margin-left: 50px;
-  width: 30%;
-  max-height: 100%;
-  float: left;
-  display: block;
+* {box-sizing:border-box}
+
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
 }
 
-/* div.slide{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-top: 150px;
-  margin-top: -120px;
+
+.mySlides {
+  display: none;
 }
-#slide1 {
-    position: relative;
-    width: 1000px;
-    height: 600px;
-    overflow: hidden;
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
 }
-#imageslide li {
-    display: inline;
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
 }
-#imageslide {
-    position: absolute;
-    width: 5780px;
-    padding: 0;
-    margin: 0px 0px;
-    animation-name: AutoSlide;
-    animation-duration: 20s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
 }
-@keyframes AutoSlide {
-    0%, 15%, 100% {
-        left: 0px; /*1ère image*/
-    /* }
-    35%, 50% {
-        left: -1005px; /*2ème image*/
-    /* }
-    70%, 85% {
-        left: -2010px; /*3ème image*/
-    /* }
+/* .text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
 } */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
 
 </style>
