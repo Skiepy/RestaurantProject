@@ -8,6 +8,7 @@
       <p class="BigText">"IN THE CENTRE OF THE PARISIAN GOLDEN TRIANGLE, A GASTRONOMIC RESTAURANT, NESTLED WITHIN A
         SUPERB 19TH CENTURY PRIVATE MANSION."</p>
     </div>
+
     <div class="DivPersonnes">
       <img src="@/assets/chef.jpg" alt="" class="chefPic">
       <div class="TextDivPersonnes">
@@ -17,6 +18,16 @@
           seasonal products. The land-sea associations, dear to the chef, are sublimated during each “sequence” of the
           meal by a myriad of satellite plates with marked flavours.</p>
       </div>
+    </div>
+
+    <div class="DivPersonnes">
+      <div class="TextDivPersonnes2">
+        <p class="BigTextBlue">Chef Etchebest</p>
+        <p class="MiddleTextBlue">In 2000, his friend Michel Portos challenged him: the MOF, the competition for the
+          excellence of French know-how. True to his values, Philippe Etchebest gives everything and enters the
+          prestigious circle of the best workers in France.</p>
+      </div>
+      <img src="@/assets/etchebest.png" alt="" class="chefPic">
     </div>
 
     <div id="carrousel">
@@ -76,7 +87,7 @@ body {
 .back-video {
   position: absolute;
   right: 0;
-  bottom : -20%;
+  bottom: -20%;
   z-index: -1;
 }
 
@@ -103,13 +114,13 @@ body {
   font-family: 'Bebas Neue', cursive;
   text-align: center;
   color: #f4f4f1;
-  margin-right : 170px;
-  margin-left : 170px;
+  margin-right: 170px;
+  margin-left: 170px;
   padding: 100px;
-  padding-top:150px;
+  padding-top: 150px;
   padding-bottom: 300px;
   font-size: 60px;
-  filter : drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+  filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
 }
 
 .BigTextBlue {
@@ -162,9 +173,15 @@ body {
 }
 
 .TextDivPersonnes {
-  margin-top : 20px;
-  margin-right : 100px;
-  margin-left : 450px;
+  margin-top: 20px;
+  margin-right: 100px;
+  margin-left: 450px;
+}
+
+.TextDivPersonnes2 {
+  margin-top: 20px;
+  margin-right: 550px;
+
 }
 
 .chefPic {
