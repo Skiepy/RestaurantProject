@@ -1,5 +1,5 @@
-// Import function from user Model
-import { getBookings, getBookingById, getBookingByUserId, insertBooking, updateBookingById, deleteBookingById } from "../models/bookingModels.js";
+// Import function from booking Model
+import { getBookings, getBookingById, getBookingByUserId, insertBooking, updateBookingById, deleteBookingById } from "../models/bookingModel.js";
 
 // Get All bookings
 export const showBookings = (req, res) => {
