@@ -2,6 +2,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 
+// Users
 // import function from controller
 import { showUsers, showUserById, createUser, updateUser, deleteUser } from "../controllers/user.js";
 
@@ -38,6 +39,28 @@ router.post('/users/login', async (req, res) => {
         console.log(error);
     }
 })
+
+// Booking
+// import function from controller
+import {showBookings, showBookingById, showBookingByUserId, createBooking, updateBooking, deleteBooking} from "../controllers/booking.js";
+
+// Get All bookings
+router.get('/bookings', showBookings);
+
+// Get Single booking
+router.get('/bookings/:id', showBookingById);
+
+// Get Single booking
+router.get('/bookingsByUser/:id', showBookingByUserId);
+
+// Create New booking
+router.post('/bookings', createBooking);
+
+// Update booking
+router.put('/bookings/:id', updateBooking);
+
+// Delete booking
+router.delete('/bookings/:id', deleteBooking);
 
 
 // export default router

@@ -2,10 +2,25 @@
     <div class="register">
         <label class="labelTitle">Login</label>
         <button class="button register" @click="goToLogin">Login</button>
+
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
                 <input class="input" type="text" placeholder="Email" v-model="email" />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Firstname</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="firstname" v-model="firstname" />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Lastname</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="lastname" v-model="lastname" />
             </div>
         </div>
 
@@ -37,6 +52,8 @@ export default {
     data() {
         return {
             email: "",
+            firstname : "",
+            lastname : "",
             password: "",
             password2: "",
             items: [],
@@ -59,9 +76,13 @@ export default {
                     if (!alreadyUsed) {
                         await axios.post("http://localhost:5000/users", {
                             email: this.email,
+                            firstname : this.firstname,
+                            lastname : this.lastname,
                             password: this.password
                         });
                         this.email = "";
+                        this.firstname = "";
+                        this.lastname = "";
                         this.password = "";
                         this.password2 = "";
                         this.$router.push("/login");
