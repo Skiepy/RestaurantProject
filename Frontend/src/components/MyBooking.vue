@@ -78,8 +78,8 @@
             <div class="control">
                 <select v-model="timeSlot" required>
                     <option value="">---Please select a time slot---</option>
-                    <option value="12h">12h</option>
-                    <option value="13h30">13h30</option>
+                    <option value="12:00:00">12h</option>
+                    <option value="13:30:00">13h30</option>
                 </select>
             </div>
         </div>
@@ -176,6 +176,37 @@ export default {
         },
         async createBooking() {
             try {
+                // const res = await axios.get(`http://localhost:5000/dates/${this.date + " " + this.timeSlot}`);
+                // console.log(res.data);
+                // if (res.data != "") {
+                //     if (this.smoking == 1) {
+                //         if (this.nbPeople > res.data.smokingSeats) {
+                //             alert("Not enough space in the smoking area");
+                //         }
+                //     } else {
+                //         if (this.nbPeople > res.data.nonSmokingSeats) {
+                //             alert("Not enough space in the non-smoking area");
+                //         }
+                //     }
+                // } else {
+                //     if (this.smoking == 1 && this.nbPeople <= 10) {
+                //         await axios.post("http://localhost:5000/dates/", {
+                //             date : this.date + " " + this.timeSlot,
+                //             smokingSeats: (10 - parseInt(this.nbPeople)),
+                //             nonSmokingSeats: 40
+                //         });
+                //     } else if(this.smoking == 0 && this.nbPeople <= 40){
+                //         await axios.post("http://localhost:5000/dates/", {
+                //             date : this.date + " " + this.timeSlot,
+                //             smokingSeats: 10,
+                //             nonSmokingSeats: (40 - parseInt(this.nbPeople))
+                //         });
+                //     } else {
+                //         alert("We're sorry, we only accept up to 10 people ine the smoking area and up to 40 in the non-smoking area");
+                //     }
+
+                // }
+
                 if (this.firstname != "" && this.lastname != "" && this.nbPeople != "" && this.menu != "" && this.date != "" && this.timeSlot != "" && this.smoking != "") {
                     await axios.post('http://localhost:5000/bookings', {
                         users_id: this.id,
@@ -187,8 +218,7 @@ export default {
                         citizenship: this.citizenship,
                         nbPeople: this.nbPeople,
                         menu: this.menu,
-                        date: this.date,
-                        timeSlot: this.timeSlot,
+                        date: this.date + " " + this.timeSlot,
                         allergies: this.allergies,
                         diet: this.diet,
                         smoking: this.smoking

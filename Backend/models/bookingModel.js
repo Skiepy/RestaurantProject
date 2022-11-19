@@ -52,7 +52,7 @@ export const insertBooking = async (data, result) => {
 // Update booking to Database
 // A REFAIRE EN FONCTION DE LA TABLE
 export const updateBookingById = (data, id, result) => {
-    db.query("UPDATE dbresto.booking SET users_id = ?, firstname = ?, lastname = ?, passport = ?, age = ?, occupation = ?, citizenship = ?, nbPeople = ?, menu = ?, date = ?, timeSlot = ?, allergies = ?, diet = ?, smoking = ? WHERE booking_id = ?", [data.users_id, data.firstname, data.lastname, data.passport, data.age, data.occupation, data.citizenship, data.nbPeople, data.menu, data.date, data.timeSlot, data.allergies, data.diet, data.smoking, id], (err, results) => {
+    db.query("UPDATE dbresto.booking SET users_id = ?, firstname = ?, lastname = ?, passport = ?, age = ?, occupation = ?, citizenship = ?, nbPeople = ?, menu = ?, date = ?, allergies = ?, diet = ?, smoking = ? WHERE booking_id = ?", [data.users_id, data.firstname, data.lastname, data.passport, data.age, data.occupation, data.citizenship, data.nbPeople, data.menu, data.date, data.allergies, data.diet, data.smoking, id], (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);

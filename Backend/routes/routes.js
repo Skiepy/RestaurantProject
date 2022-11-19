@@ -63,5 +63,25 @@ router.put('/bookings/:id', updateBooking);
 router.delete('/bookings/:id', deleteBooking);
 
 
+// Resto
+// Import function from controller
+import { showDates, showDateByDate, createDate, updateDate, deleteDate } from "../controllers/resto.js";
+
+// Get All dates
+router.get('/dates', showDates);
+
+// Get Single dates
+router.get('/dates/:date', showDateByDate);
+
+// Create new date
+router.post('/dates', createDate);
+
+// Update date
+router.put('/datess/:date', updateDate);
+
+// Delete date
+router.delete('/dates/:date', deleteDate);
+
+
 // export default router
 export default router;
