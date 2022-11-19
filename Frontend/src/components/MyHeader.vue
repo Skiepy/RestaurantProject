@@ -1,67 +1,90 @@
 <template>
-    <header>
-    <h1>AU MANOIR SALE</h1>
+  <div id="fond-logo">
     <img src="@/assets/manoir_logo.png" alt="lo" id="logo">
-    <nav>
-      <router-link to="/">HOME  </router-link> |
-      <router-link to="/">ABOUT  </router-link> |
-      <router-link to="/">MENU  </router-link> |
-      <router-link to="/">CONTACT </router-link>
-    </nav>
+  </div>
+  <header>
+      <nav id="header-nav">
+
+        <div id="tab-links">
+          <router-link class="rl" to="/">HOME </router-link> |
+          <router-link class="rl" to="/">MENU </router-link>
+        </div>
+
+        <div id="titre">
+          <h1>Le Manoir Salé</h1>
+        </div>
+
+        <div id="tab-links">
+          <router-link class="rl" to="/">ABOUT </router-link> |
+          <router-link class="rl" to="/">PROFILE </router-link>
+        </div>
+
+      </nav>
   </header>
 </template>
 
 <script>
- export default {
-   name: 'MyHeader'}
+export default {
+  name: 'MyHeader'
+}
+
 </script>
 
 <style scoped>
-header{
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+header {
   width: 100%;
-  height: 200px;
-  background-color: white;
+  height: 80px;
+  background-color: #fff;
   text-align: center;
-  position: relative;
-  top: 0;
   overflow: hidden;
+  position : sticky;
+  top : 0;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
-h1{
-  font-size: 35px;
+h1 {
+  font-size: 30px;
   color: #1E3551;
   line-height: 52px;
-  text-transform: uppercase;
   font-weight: 100;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-nav{
-  position: absolute;
-  bottom: 0;
-  height: 60px;
-  line-height: 10px;
-  width: 100%;
-  background-color: white;
-  color: white;
+  font-family: 'Great Vibes', cursive;
 }
 
-#logo{
-  bottom: 0;
-  margin-left: 40px;
-  margin-bottom: 50px;
-  width: auto;
-  max-height: 40%;
-  float: left;  
-  display: block;
+#header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top : 8px;
+  border-radius: 8px;
 }
 
+#logo {
+  width: 75px;
+}
 
-/* image{
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  padding-top: 10px;
-  padding-right: 50px ;
-  line-height: 40px;
-} */
+#titre {
+  padding-top : 6px;
+  padding-left: 10px;
+}
+
+#fond-logo{
+  background-color : #fff;
+  width :100%;
+}
+
+.rl {
+  font-family: 'Comfortaa', cursive;
+  font-size : 14px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #dbb172;
+}
+
+.rl:hover {
+  color: #1E3551;
+  text-decoration: none;
+}
 </style>

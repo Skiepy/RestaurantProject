@@ -16,6 +16,7 @@
         <footer>
             <div class="container">
                 <div class="row justify-content-center">
+                  <div>      </div>
                     <div class="col-sm-4 col-md-3 item">
                         <h3>BOOK A TABLE</h3>
                             <ul><li><router-link to="/">CONTACT US</router-link></li></ul>
@@ -32,9 +33,10 @@
                         <h3>NEW CONCEPT</h3>
                             <ul><li><router-link to="/">LEARN MORE ABOUT US</router-link></li></ul>
                     </div>
-                    <li></li>
-                    <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
-                        <p class="copyright">Company Name © 2022</p>
+                    <div></div>                 
+                    <!-- <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a> -->
+                    <div id="bottom-img"> <p class="copyright" id="txt">Le Manoir Salé</p>
+                        <img src="@/assets/manoir_logo.png" alt="lo" id="img">
                     </div>
                 </div>
             </div>
@@ -83,11 +85,11 @@
 .footer-clean ul a {
   color:inherit;
   text-decoration:none;
-  opacity:0.8;
+  opacity:0.6;
 }
 
 .footer-clean ul a:hover {
-  opacity:1;
+  color: white;
 }
 
 .footer-clean .item.social {
@@ -118,12 +120,12 @@
   border:1px solid #ccc;
   margin-left:10px;
   margin-top:22px;
-  color:inherit;
+  color: white;
   opacity:0.75;
 }
 
 .footer-clean .item.social > a:hover {
-  opacity:0.9;
+  color: #ccc;
 }
 
 @media (max-width:991px) {
@@ -144,4 +146,24 @@
   font-size:13px;
   opacity:0.6;
 }
+
+#bottom-img{
+  border: 5px solid;
+  border-color: #dbb172;
+  text-align: center;
+}
+
+#txt{
+  font-size: 30px;
+  color: #1E3551;
+  line-height: 52px;
+  font-weight: 100;
+  font-family: 'Great Vibes', cursive;
+}
+
+#img{
+  width: 7%;
+  margin-left: 20px;
+}
+
 </style>

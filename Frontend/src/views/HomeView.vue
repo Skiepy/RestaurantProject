@@ -5,7 +5,6 @@
       <video autoplay muted loop plays-inline id="myVideo" class="back-video">
         <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
       </video>
-      <h1 id="name">Le Manoir Salé</h1>
       <p id="text">LOREM DOLOR ULLAMCO, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
         ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
@@ -13,9 +12,8 @@
     </div>
     <div id="SecDiv">
       <img src="@/assets/chef.jpg" alt="" id="chefPic">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.</p>
+      <p>Chef Chang</p>
+      <p>Plat préféré : le chat</p>
     </div>
     <div id="ThridDiv">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste modi voluptatum asperiores impedit unde a
@@ -26,6 +24,9 @@
       </div>
       <section>
         <div class="container reveal fade-bottom">
+          <img src="@/assets/plat1.jpg" alt="" id="plat1">
+          <img src="@/assets/plat2.jpg" alt="" id="plat2">
+          <img src="@/assets/plat3.jpg" alt="" id="plat3">
           <h2>Enjoy our meals</h2>
           <div class="text-container">
             <div class="text-box">
@@ -63,9 +64,10 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('//db.onlinewebfonts.com/c/158d85dc0d6cc6d89eff0cdf2f1d53bd?family=K2D+ExtraBold');
 @import url('http://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
 
 body {
   margin: 0;
@@ -94,9 +96,8 @@ body {
 #text {
   text-align: justify;
   color:#f4f4f1;
-  text-shadow: 1px 1px 2px black;
-  font-family: Roboto;
-  font-size: 40px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 50px;
   padding-left: 200px;
   padding-right: 200px;
   padding-top: 40px;
@@ -115,6 +116,10 @@ body {
 #SecDiv p {
   padding-left: 463px;
   padding-right: 200px;
+  margin-left: 50px;
+  margin-top: 20px;
+  padding-top: 20px;
+  text-align: justify;
 }
 
 #chefPic {
@@ -212,5 +217,52 @@ section .text-container .text-box {
     opacity: 1;
   }
 }
+
+#plat2 {
+  margin-left: 50px;
+  width: 30%;
+  max-height: 30%;
+  float: left;
+  display: block;
+}
+
+/* div.slide{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 150px;
+  margin-top: -120px;
+}
+#slide1 {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    overflow: hidden;
+}
+#imageslide li {
+    display: inline;
+}
+#imageslide {
+    position: absolute;
+    width: 5780px;
+    padding: 0;
+    margin: 0px 0px;
+    animation-name: AutoSlide;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes AutoSlide {
+    0%, 15%, 100% {
+        left: 0px; /*1ère image*/
+    /* }
+    35%, 50% {
+        left: -1005px; /*2ème image*/
+    /* }
+    70%, 85% {
+        left: -2010px; /*3ème image*/
+    /* }
+} */
 
 </style>
