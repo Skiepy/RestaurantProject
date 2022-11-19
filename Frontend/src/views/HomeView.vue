@@ -1,19 +1,19 @@
 <template>
   <div class="homePage">
     <MyHeader></MyHeader>
-    <div id="FirstDiv">
+    <div>
       <video autoplay muted loop plays-inline id="myVideo" class="back-video">
         <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
       </video>
-      <p class="BigText">IN THE CENTRE OF THE PARISIAN GOLDEN TRIANGLE, A GASTRONOMIC RESTAURANT, NESTLED WITHIN A
-        SUPERB 19TH CENTURY PRIVATE MANSION.</p>
+      <p class="BigText">"IN THE CENTRE OF THE PARISIAN GOLDEN TRIANGLE, A GASTRONOMIC RESTAURANT, NESTLED WITHIN A
+        SUPERB 19TH CENTURY PRIVATE MANSION."</p>
     </div>
     <div class="DivPersonnes">
       <img src="@/assets/chef.jpg" alt="" class="chefPic">
       <div class="TextDivPersonnes">
         <p class="BigTextBlue">Chef Chang</p>
         <p class="MiddleTextBlue">Brilliantly, he creates an instinctive, inspired and vibrantly modern style of
-          cuisine. At Le Clarence, there is no settled menu, but rather a variety of dishes based on exceptional and
+          cuisine. At Le Manoir Salé, there is no settled menu, but rather a variety of dishes based on exceptional and
           seasonal products. The land-sea associations, dear to the chef, are sublimated during each “sequence” of the
           meal by a myriad of satellite plates with marked flavours.</p>
       </div>
@@ -76,7 +76,7 @@ body {
 .back-video {
   position: absolute;
   right: 0;
-  bottom: 200;
+  bottom : -20%;
   z-index: -1;
 }
 
@@ -101,11 +101,15 @@ body {
 .BigText {
   /* Debut des polices pour le texte */
   font-family: 'Bebas Neue', cursive;
-  text-align: justify;
+  text-align: center;
   color: #f4f4f1;
+  margin-right : 170px;
+  margin-left : 170px;
   padding: 100px;
-  padding-bottom: 500px;
-  font-size: 50px;
+  padding-top:150px;
+  padding-bottom: 300px;
+  font-size: 60px;
+  filter : drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
 }
 
 .BigTextBlue {
@@ -127,7 +131,6 @@ body {
   font-family: 'Playfair Display', serif;
   text-align: justify;
   color: #1E3551;
-  padding: 50px;
   font-size: 25px;
 }
 
@@ -150,7 +153,7 @@ body {
 
 
 .DivPersonnes {
-  padding: 40px;
+  padding: 60px;
   padding-top: 60px;
   height: 500px;
   background-color: white;
@@ -159,7 +162,9 @@ body {
 }
 
 .TextDivPersonnes {
-  padding-left: 400px;
+  margin-top : 20px;
+  margin-right : 100px;
+  margin-left : 450px;
 }
 
 .chefPic {
