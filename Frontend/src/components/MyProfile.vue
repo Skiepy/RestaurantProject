@@ -113,7 +113,7 @@ export default {
                         cpt++;
                     }
                 }
-                console.log(this.myItems);
+
                 for (let index = 0; index < this.myItems.length; index++) {
                     const res = await axios.get(`http://localhost:5000/dates/${this.myItems[index].date}`)
                     if (this.myItems[index].smoking == 1) {
