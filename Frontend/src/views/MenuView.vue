@@ -2,6 +2,7 @@
     <MyHeader></MyHeader>
     <div class="menu">
         <h1>Today's Menu</h1>
+        <img src="@/assets/paragraph-divider-23.png" alt="" class="divider">
         <div class="plats">
         <p class="titre">APPETIZER</p>
         <p class="titre">Oysters</p>
@@ -32,6 +33,7 @@
         <p class="details">RED: Mary Rivers, Pinot Noir, Sonoma Coast</p>
         </div>
     </div>
+    <img src="@/assets/paragraph-divider-23.png" alt="" class="divider">
     <MyFooter></MyFooter>
 </template>
 
