@@ -99,6 +99,7 @@ export default {
         async deleteUser() {
             this.deleteBooking();
             await axios.delete(`http://localhost:5000/users/${this.$route.params.id}`);
+            alert("All your data has been deleted.");
             this.$router.push("/");
         },
         async deleteBooking() {
