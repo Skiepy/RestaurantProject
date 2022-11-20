@@ -16,7 +16,7 @@
 
         <div id="tab-links">
           <router-link class="rl" to="/about">ABOUT </router-link> |
-          <router-link class="rl" to="/profile">PROFILE </router-link>
+          <router-link class="rl" to="/login">PROFILE </router-link>
         </div>
 
       </nav>

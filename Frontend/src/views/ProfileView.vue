@@ -21,13 +21,16 @@
             <label v-if="nbBooking > 1">Your bookings</label>
             <!-- Avec un v-for faire apparaitre toutes les résas -->
             <tr v-for="item in myItems" :key="item.booking_id">
-                <td>{{item.lastname}}</td>
-                <td>{{item.nbPeople}}</td>
-                <td>{{item.menu}}</td>
-                <td>{{item.date}}</td>
+                <td>{{ item.lastname }}</td>
+                <td>{{ item.nbPeople }}</td>
+                <td>{{ item.menu }}</td>
+                <td>{{ item.date }}</td>
                 <td>{{ this.price }}€</td>
                 <td>
-                    <button><RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking</RouterLink></button>
+                    <button>
+                        <RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking
+                        </RouterLink>
+                    </button>
                     <button>DELETE</button>
                 </td>
             </tr>
@@ -70,9 +73,9 @@ export default {
             // Other
             booking: "0",
             modifProfile: "0",
-            items : [],
+            items: [],
             myItems: [],
-            price : ""
+            price: ""
         };
     },
     methods: {
@@ -137,20 +140,28 @@ export default {
         goToModifProfile() {
             this.modifProfile = 1;
         },
-        computePrice(){
+        computePrice() {
             this.price = 1;
             if (this.menu == "Starter + main course + dessert") {
                 this.price = parseInt(this.nbBooking) * 250;
-            } else if (this.menu == "Starter + Main course"){
+            } else if (this.menu == "Starter + Main course") {
                 this.price = parseInt(this.nbBooking) * 210;
-            } else if (this.menu == "Main course + dessert"){
+            } else if (this.menu == "Main course + dessert") {
                 this.price = parseInt(this.nbBooking) * 200;
             } else {
                 this.price = parseInt(this.nbBooking) * 120;
             }
+        },
+        async checkLogIn() {
+            var response = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+            response = response.data;
+            if (response.isLogged == 0 || this.$route.params.id == 0) {
+                this.$router.push('/login');
+            }
         }
     },
     beforeMount() {
+        this.checkLogIn();
         this.getId(this.$route.params.id);
     },
     components: { MyBooking }
