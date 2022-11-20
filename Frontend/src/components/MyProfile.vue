@@ -1,5 +1,37 @@
 <template>
-    UPDATE PROFILE
+    <div class="modifProfile">
+        <button class="button register" @click="goToProfile()">Back to Profile</button>
+
+        <div class="field">
+            <label class="label">Modify your firstname</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Firstname" v-model="firstname" />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Modify your lastname</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Lastname" v-model="lastname" />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Add a phone number</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Phone Number" v-model="phoneNumber" />
+            </div>
+        </div>
+
+        <div class="control">
+            <button class="button is-success" @click="updateUser()">Update</button>
+        </div>
+
+        <div class="dangerZone">
+            <label class="label dangerZone">DANGER ZONE</label>
+            <button class="button delete" @click="deleteUser()">DELETE INFORMATIONS</button>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -12,49 +44,95 @@ export default {
             email: "",
             firstname: "",
             lastname: "",
-            password: "",
-            password2: "",
+            phoneNumber: "",
             items: [],
+            myItems: []
         };
     },
     methods: {
-        // Create New user
-        async createUser() {
-            if ((this.password === this.password2) && (this.password != "") && (this.email != "")) {
-                var alreadyUsed = false;
-                try {
-                    const response = await axios.get(`http://localhost:5000/users/`);
-                    this.items = response.data;
-                    for (let index = 0; index < this.items.length; index++) {
-                        if (this.email === this.items[index].email) {
-                            alert("This email is already used.");
-                            alreadyUsed = true;
-                        }
-                    }
-                    if (!alreadyUsed) {
-                        await axios.post("http://localhost:5000/users", {
-                            email: this.email,
-                            firstname: this.firstname,
-                            lastname: this.lastname,
-                            password: this.password
-                        });
-                        this.email = "";
-                        this.firstname = "";
-                        this.lastname = "";
-                        this.password = "";
-                        this.password2 = "";
-                        this.$router.push("/login");
-                    }
-                } catch (error) {
-                    console.log(error);
-                }
-            } else {
-                alert("Please verify your informations.")
-            }
+        goToProfile() {
+            this.$emit('back');
         },
+        async updateUser() {
+            if (this.firstname != "") {
+                var res = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+                res = res.data;
+                await axios.put(`http://localhost:5000/users/${this.$route.params.id}`, {
+                    email: res.email,
+                    password: res.password,
+                    firstname: this.firstname,
+                    lastname: res.lastname,
+                    phoneNumber: res.phoneNumber,
+                    nbBooking: res.nbBooking,
+                    isLogged: res.isLogged
+                });
+            }
+            if (this.lastname != "") {
+                var res1 = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+                res1 = res1.data;
+                await axios.put(`http://localhost:5000/users/${this.$route.params.id}`, {
+                    email: res1.email,
+                    password: res1.password,
+                    firstname: res1.firstname,
+                    lastname: this.lastname,
+                    phoneNumber: res1.phoneNumber,
+                    nbBooking: res1.nbBooking,
+                    isLogged: res1.isLogged
+                });
+            }
+            if (this.phoneNumber) {
+                var res2 = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+                res2 = res2.data;
+                await axios.put(`http://localhost:5000/users/${this.$route.params.id}`, {
+                    email: res2.email,
+                    password: res2.password,
+                    firstname: res2.firstname,
+                    lastname: res2.lastname,
+                    phoneNumber: this.phoneNumber,
+                    nbBooking: res2.nbBooking,
+                    isLogged: res2.isLogged
+                });
+            }
+            alert("Your modifications has been successfully processed.");
+            this.goToProfile();
+        },
+        async deleteUser() {
+            this.deleteBooking();
+            await axios.delete(`http://localhost:5000/users/1`); // A modif avec ${this.$route.params.id}
+            alert('Done')
+        },
+        async deleteBooking() {
+            try {
+                var response = await axios.get(`http://localhost:5000/bookings/`);
+                this.items = response.data;
+                var cpt = 0;
+                for (let index = 0; index < this.items.length; index++) {
+                    if (this.items[index].users_id == 1) {
+                        this.myItems[cpt] = this.items[index];
+                        cpt++;
+                    }
+                }
 
-        goToLogin() {
-            this.$router.push("/login");
+                for (const item in this.myItems) {
+                    const res = await axios.get(`http://localhost:5000/dates/${item.date}`)
+                    if (item.smoking == 1) {
+                        await axios.put(`http://localhost:5000/dates/${item.date}`, {
+                            resto_id: res.data.resto_id,
+                            smokingSeats: (res.data.smokingSeats + parseInt(item.nbPeople)),
+                            nonSmokingSeats: res.data.nonSmokingSeats
+                        });
+                    } else {
+                        await axios.put(`http://localhost:5000/dates/${item.date}`, {
+                            resto_id: res.data.resto_id,
+                            smokingSeats: res.data.smokingSeats,
+                            nonSmokingSeats: (res.data.nonSmokingSeats + parseInt(item.nbPeople))
+                        });
+                    }
+                    await axios.delete(`http://localhost:5000/bookings/${item.booking_id}`)
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
 };

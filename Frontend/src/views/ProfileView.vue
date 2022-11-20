@@ -13,12 +13,12 @@
         <label>Number of bookings :</label>
         <p>{{ nbBooking }}</p>
         <br>
-        <button class="button booking" @click="goToBooking()">Make a booking</button>
-        <button class="button modProfile" @click="goToModifProfile()">Modify Profile</button>
+        <button class="button booking" @click="goToBooking">Make a booking</button>
+        <button class="button modProfile" @click="goToModifProfile">Modify Profile</button>
         <button class="button logOut" @click="logOutUser()">Log Out</button>
         <div v-if="nbBooking > 0">
-            <label v-if="nbBooking == 1">Your booking</label>
-            <label v-if="nbBooking > 1">Your bookings</label>
+            <label v-if="nbBooking == 1">My booking</label>
+            <label v-if="nbBooking > 1">My bookings</label>
             <tr v-for="item in myItems" :key="item.booking_id">
                 <td>{{ item.lastname }}</td>
                 <td>{{ item.nbPeople }}</td>
@@ -133,19 +133,24 @@ export default {
         goToBooking() {
             this.booking = 1;
         },
-        async goToProfile() {
+        goToProfile() {
             this.booking = 0;
             this.modifProfile = 0;
             this.getUser();
         },
         goToModifProfile() {
+            this.booking = 2;
             this.modifProfile = 1;
         },
         async checkLogIn() {
-            var response = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
-            response = response.data;
-            if (response.isLogged == 0) {
-                this.$router.push('/login');
+            try {
+                var response = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+                response = response.data;
+                if (response.isLogged == 0) {
+                    this.$router.push('/login');
+                }
+            } catch (error) {
+                console.log(error);
             }
         },
         async logOutUser() {
