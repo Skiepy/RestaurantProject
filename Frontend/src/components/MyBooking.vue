@@ -261,7 +261,8 @@ export default {
                 firstname: firstname,
                 lastname: lastname,
                 phoneNumber: phoneNumber,
-                nbBooking: nbBooking + 1
+                nbBooking: nbBooking + 1,
+                isLogged: response.data.isLogged
             });
             alert("Your reservation has been successfully processed. We are looking forward to welcoming you.");
             this.back();

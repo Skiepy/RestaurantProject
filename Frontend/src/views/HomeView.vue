@@ -12,7 +12,7 @@
     <div class="reveal fade-bottom" id="DivPersonnes">
       <img src="@/assets/chef.jpg" alt="" class="chefPic">
       <div class="TextDivPersonnes">
-        <p class="BigTextBlue">Chef Chang</p>
+        <p class="BigTextBlue" style="text-align: justify">Chef Chang</p>
         <p class="MiddleTextBlue">Brilliantly, he creates an instinctive, inspired and vibrantly modern style of
           cuisine. At Le Manoir Salé, there is no settled menu, but rather a variety of dishes based on exceptional and
           seasonal products. The land-sea associations, dear to the chef, are sublimated during each “sequence” of the
@@ -21,7 +21,7 @@
     </div>
     <div class="reveal fade-bottom" id="DivPersonnes2">
       <div class="TextDivPersonnes2">
-        <p class="BigTextBlue2" style="text-align : right">Chef Etchebest</p>
+        <p class="BigTextBlue" style="text-align : right">Chef Etchebest</p>
         <p class="MiddleTextBlue">In 2000, his friend Michel Portos challenged him: the MOF, the competition for the
           excellence of French know-how. True to his values, Philippe Etchebest gives everything and enters the
           prestigious circle of the best workers in France.</p>
@@ -56,7 +56,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
@@ -81,16 +81,6 @@ body {
   display: block;
 }
 
-#name {
-  margin: 0;
-  text-shadow: 1px 1px 2px black;
-  text-align: center;
-  padding-top: 20px;
-  color: white;
-  font-size: 100px;
-  text-shadow: black 0.1em 0.1em 0.2em;
-}
-
 .BigText {
   /* Debut des polices pour le texte */
   font-family: 'Bebas Neue', cursive;
@@ -106,12 +96,6 @@ body {
 }
 
 .BigTextBlue {
-  font-family: 'Bebas Neue', cursive;
-  text-align: justify;
-  color: #1E3551;
-  font-size: 50px;
-}
-.BigTextBlue2 {
   font-family: 'Bebas Neue', cursive;
   color: #1E3551;
   font-size: 50px;
