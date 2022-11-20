@@ -272,8 +272,8 @@ section .text-container .text-box {
 }
 
 .slides{
-  margin-left: 30%;
-  margin-right: 30%;
+  padding-left: 2000px;
+  padding-right: 2000px;
   margin-bottom: 20%;
   margin-top: 20%;
   align-items: center;
