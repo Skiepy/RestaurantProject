@@ -9,7 +9,7 @@
         SUPERB 19TH CENTURY PRIVATE MANSION."</p>
     </div>
 
-    <div class="DivPersonnes">
+    <div class="reveal fade-bottom" id="DivPersonnes">
       <img src="@/assets/chef.jpg" alt="" class="chefPic">
       <div class="TextDivPersonnes">
         <p class="BigTextBlue">Chef Chang</p>
@@ -19,7 +19,7 @@
           meal by a myriad of satellite plates with marked flavours.</p>
       </div>
     </div>
-    <div class="DivPersonnes2">
+    <div class="reveal fade-bottom" id="DivPersonnes2">
       <div class="TextDivPersonnes2">
         <p class="BigTextBlue2">Chef Etchebest</p>
         <p class="MiddleTextBlue">In 2000, his friend Michel Portos challenged him: the MOF, the competition for the
@@ -168,7 +168,7 @@ body {
 }
 
 
-.DivPersonnes {
+#DivPersonnes {
   margin-bottom:100px;
   margin-left:20px;
   padding: 60px;
@@ -177,7 +177,7 @@ body {
   color: #1E3551;
 }
 
-.DivPersonnes2 {
+#DivPersonnes2 {
   padding: 60px;
   margin-right:20px;
   padding-top: 60px;
