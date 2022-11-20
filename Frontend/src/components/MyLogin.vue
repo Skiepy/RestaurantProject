@@ -33,6 +33,7 @@ export default {
             password: "",
             hash: "",
             items: [],
+            id : ""
         };
     },
     methods: {
@@ -49,8 +50,9 @@ export default {
                                 password: this.password,
                                 hashed: this.items[index].password
                             });
-                            this.$emit('connected', 1);
-                            this.$emit('id', this.items[index].users_id);
+                            // this.$emit('connected', 1);
+                            // this.$emit('id', this.items[index].users_id);
+                            this.id =  this.items[index].users_id;
                         }
                     }
                     this.email = "";
@@ -59,7 +61,7 @@ export default {
                     if (!testPassword.data) {
                         alert("Wrong email or password.");
                     } else {
-                        this.$router.push("/profile");
+                        this.$router.push(`/profile/${this.id}`);
                     }
                 } catch (err) {
                     console.log(err);

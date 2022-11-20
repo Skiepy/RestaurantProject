@@ -34,13 +34,13 @@ const routes = [
     component: () => import('../components/MyBooking.vue')
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'profile',
 
     component: () => import('../views/ProfileView.vue')
   },
   {
-    path: '/updateProfile',
+    path: '/updateProfile/:id',
     name: 'updateProfile',
 
     component: () => import('../components/MyProfile.vue')

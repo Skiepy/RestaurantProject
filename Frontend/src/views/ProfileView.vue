@@ -1,6 +1,7 @@
 <template>
-    <MyLogin v-if="connected == 0" @id="getId($event)" @connected="changeConnectionState($event)"></MyLogin>
-    <div v-if="connected != 0 && booking == 0">
+    <!-- Si j'ai le temps : penser à faire un check en loadant la page pour savoir si l'utilisateur est bien connecté (isLogged dans la DB) 
+        pour éviter d'avoir accès à la page de profil en ayant juste l'id de l'utilisateur -->
+    <div v-if="booking == 0">
         <h1>Profile</h1>
         <h2>Welcome back {{ firstname }}</h2>
         <h2>A refaire (schéma)</h2>
@@ -25,7 +26,7 @@
                 <td>{{item.menu}}</td>
                 <td>{{item.date}}</td>
                 <td>
-                    <RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking</RouterLink>
+                    <button><RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking</RouterLink></button>
                     <button>DELETE</button>
                 </td>
             </tr>
@@ -38,14 +39,13 @@
 
 <script>
 import MyBooking from '@/components/MyBooking.vue';
-import MyLogin from '@/components/MyLogin.vue';
 import axios from 'axios';
 
 export default {
     data() {
         return {
             // User table
-            id: "",
+            id: parseInt(this.$route.params.id),
             connected: "0",
             email: "",
             firstname: "",
@@ -90,6 +90,7 @@ export default {
                 // Other
                 this.booking = "0";
                 this.modifProfile = "0";
+                this.$router.push('/login');
             }
         },
         async getUser() {
@@ -129,15 +130,15 @@ export default {
         async goToProfile() {
             this.booking = 0;
             this.modifProfile = 0;
-            // const id = this.id;
-            // window.location.reload();
-            // this.id = id;
             this.getUser();
         },
         goToModifProfile() {
             this.modifProfile = 1;
         }
     },
-    components: { MyLogin, MyBooking }
+    beforeMount() {
+        this.getId(this.$route.params.id);
+    },
+    components: { MyBooking }
 };
 </script>
