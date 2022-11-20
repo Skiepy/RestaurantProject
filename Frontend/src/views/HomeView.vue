@@ -35,25 +35,21 @@
 
     <section>
       <div>
-        <transition-group name="fade" tag="div">
+        <!-- <transition-group name="fade" tag="div">
           <div v-for="i in [currentIndex]" :key="i">
             <img :src="currentImg" />
           </div>
         </transition-group>
         <a class="prev" @click="prev" href="#">&#10094; Previous</a>
-        <a class="next" @click="next" href="#">&#10095; Next</a>
+        <a class="next" @click="next" href="#">&#10095; Next</a> -->
       </div>
       <div class="container reveal fade-bottom">
-        <div>
-          <Slider></Slider>
+        <div id="slides">
           <h2>Enjoy our meals</h2>
+          <Slider></Slider>
         </div>
       </div>
     </section>
-
-
-
-
     <MyFooter></MyFooter>
   </div>
 </template>
@@ -273,6 +269,14 @@ section .text-container .text-box {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.slides{
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 20%;
+  margin-top: 20%;
+  align-items: center;
 }
 
 @keyframes fade-left {

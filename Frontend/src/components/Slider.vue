@@ -1,94 +1,12 @@
-<!-- <template>
-    <div class="app">
-        <carousel >
-            <carousel-slide v-for="slide in slides" :key="slide" class="carousel-slider">
-                <img :src="slide" :alt="slide">
-            </carousel-slide>
-        </carousel>
-    </div>    
-</template>
-
-<script>
-import Carousel from '@/components/Carousel.vue';
-import CarouselSlide from '@/components/CarouselSlide.vue';
-export default {
-    data(){
-        return {
-            slides: [
-                "https://imgs.search.brave.com/Q1XA7w2vNEBSLrUOxqc6FAT5Z9Y2sX7Iu1yNFWyJE6M/rs:fit:768:519:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzc1Lzcz/L2IzLzc1NzNiMzcw/MmI3MDI1NDI4MWMy/Yzg1YTY0YzJkNTI2/LmpwZw",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE831I-AMS8TxtEUsXtI6PwfuUfX5fmEBcGQ&usqp=CAU",
-                "https://frigecreme.fr/wp-content/uploads/2018/06/frigecreme-dressage-assiette-souffle.jpg",
-            ]
-        }
-    },
-    components : {
-        Carousel : Carousel,
-        CarouselSlide : CarouselSlide,
-    }
-}
-</script>
-
-<style>
-    .app {
-        display:flex;
-        justify-content: center;
-    }
-    .carousel {
-        position:relative;
-        overflow: hidden;
-        width:800px;
-        height:500px;
-        z-index:10;
-    }
-    .btn {
-        padding:5px 10px;
-        background-color:rgba(0,0,0,0.5);
-        border:1px solid transparent;
-        margin:5px 10px;
-        color:#FFF;
-        height:50px;
-        width:50px;
-        position:absolute;
-        margin-top:-25px;
-        z-index:2;
-    }
-    .btn:hover {
-        cursor: pointer;
-    }
-    .btn:focus{
-        outline:none;
-    }
-    .btn-next {
-        top:50%;
-        right:0;
-    }
-    .btn-prev {
-        top:50%;
-        left:0;
-    }
-    .carousel-slider {
-        position:absolute;
-        top:0;
-        left:0;
-        bottom:0;
-        right:0;
-    }
-    .carousel-slider img {
-        width:100%;
-        height:100%;
-    }
-</style> -->
-
-
 <template>
 <div>
-    <transition-group name="fade" tag="div">
+    <!-- <transition-group name="fade" tag="div"> -->
     <div v-for="i in [currentIndex]" :key="i">
         <img :src="currentImg" />
     </div>
-    </transition-group>
-    <a class="prev" @click="prev" href="#">&#10094; Previous</a>
-    <a class="next" @click="next" href="#">&#10095; Next</a>
+    <!-- </transition-group> -->
+    <!-- <a class="prev" @click="prev" href="#">&#10094; Previous</a>
+    <a class="next" @click="next" href="#">&#10095; Next</a> -->
 </div>
 </template>
 
@@ -100,8 +18,8 @@ export default {
     return {
       images: [
         "https://imgs.search.brave.com/Q1XA7w2vNEBSLrUOxqc6FAT5Z9Y2sX7Iu1yNFWyJE6M/rs:fit:768:519:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzc1Lzcz/L2IzLzc1NzNiMzcw/MmI3MDI1NDI4MWMy/Yzg1YTY0YzJkNTI2/LmpwZw",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE831I-AMS8TxtEUsXtI6PwfuUfX5fmEBcGQ&usqp=CAU",
-        "https://frigecreme.fr/wp-content/uploads/2018/06/frigecreme-dressage-assiette-souffle.jpg"
+        "https://imgs.search.brave.com/bdQ_SC2Xagevg2EWQns1c1eNkasfYPWz7yCNOv8-x9E/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/Z2FieW4uY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDE3LzAx/L2ltYWdlczJwaG90/by1jdWlzaW5lLWdh/c3Ryb25vbWlxdWUt/NDAuanBn",
+        "https://imgs.search.brave.com/BITnhkJ65e4MJgOusEE9FvIgxCJkI3eeyshHQdd7pI0/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzE5Lzdm/LzliLzE5N2Y5Yjdj/N2I3MjU2MGE0Yjdi/MzZiNzAyODk3M2U5/LmpwZw"
       ],
       timer: null,
       currentIndex: 0
@@ -113,7 +31,7 @@ export default {
 
   methods: {
     startSlide: function() {
-      this.timer = setInterval(this.next, 4000);
+      this.timer = setInterval(this.next, 2000);
     },
 
     next: function() {
@@ -133,7 +51,7 @@ export default {
 
 <style>
 
-.fade-enter-active,
+/* .fade-enter-active,
 .fade-leave-active {
   transition: all 0.9s ease;
   overflow: hidden;
@@ -141,6 +59,7 @@ export default {
   position: absolute;
   width:100%;
   opacity: 1;
+  padding-bottom: 20%;
 }
 
 .fade-enter,
@@ -148,10 +67,11 @@ export default {
   visibility: hidden;
   width:100%;
   opacity: 0;
-}
+  padding-bottom: 20%;
+} */
 
 img {
-  width:300px;
+  width:60%;
 }
 
 .prev, .next {
