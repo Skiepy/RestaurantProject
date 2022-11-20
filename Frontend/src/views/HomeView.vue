@@ -21,7 +21,7 @@
     </div>
     <div class="reveal fade-bottom" id="DivPersonnes2">
       <div class="TextDivPersonnes2">
-        <p class="BigTextBlue2">Chef Etchebest</p>
+        <p class="BigTextBlue2" style="text-align : right">Chef Etchebest</p>
         <p class="MiddleTextBlue">In 2000, his friend Michel Portos challenged him: the MOF, the competition for the
           excellence of French know-how. True to his values, Philippe Etchebest gives everything and enters the
           prestigious circle of the best workers in France.</p>
@@ -45,7 +45,7 @@
       </div>
       <div class="container reveal fade-bottom">
         <div id="slides">
-          <h2>Enjoy our meals</h2>
+          <p class="BigTextBlue2">Enjoy our meals</p>
           <Slider></Slider>
         </div>
       </div>
@@ -126,7 +126,6 @@ body {
 }
 .BigTextBlue2 {
   font-family: 'Bebas Neue', cursive;
-  text-align: right;
   color: #1E3551;
   font-size: 50px;
 }
