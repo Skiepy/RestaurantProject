@@ -1,7 +1,6 @@
 <template>
     <MyLogin v-if="connected == 0" @id="getId($event)" @connected="changeConnectionState($event)"></MyLogin>
     <div v-if="connected != 0 && booking == 0">
-        <!-- {{ getUser() }} -->
         <h1>Profile</h1>
         <h2>Welcome back {{ firstname }}</h2>
         <h2>A refaire (schéma)</h2>
@@ -20,6 +19,16 @@
             <label v-if="nbBooking == 1">Your booking</label>
             <label v-if="nbBooking > 1">Your bookings</label>
             <!-- Avec un v-for faire apparaitre toutes les résas -->
+            <tr v-for="item in myItems" :key="item.booking_id">
+                <td>{{item.lastname}}</td>
+                <td>{{item.nbPeople}}</td>
+                <td>{{item.menu}}</td>
+                <td>{{item.date}}</td>
+                <td>
+                    <RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking</RouterLink>
+                    <button>DELETE</button>
+                </td>
+            </tr>
         </div>
     </div>
     <div v-if="booking == 1">
@@ -59,7 +68,9 @@ export default {
             nonSmokingSeats: "",
             // Other
             booking: "0",
-            modifProfile: "0"
+            modifProfile: "0",
+            items : [],
+            myItems: []
         };
     },
     methods: {
@@ -76,20 +87,6 @@ export default {
                 this.lastname = "";
                 this.phoneNumber = "";
                 this.nbBooking = "";
-                // Booking table
-                this.passport = "";
-                this.age = "";
-                this.occupation = "";
-                this.citizenship = "";
-                this.nbPeople = "";
-                this.menu = "";
-                this.date = "";
-                this.allergies = "";
-                this.diet = "";
-                this.smokingArea = "";
-                // Resto table
-                this.smokingSeats = "";
-                this.nonSmokingSeats = "";
                 // Other
                 this.booking = "0";
                 this.modifProfile = "0";
@@ -113,18 +110,15 @@ export default {
         },
         async getBooking() {
             try {
-                var response = await axios.get(`http://localhost:5000/booking/${this.id}`);
-                response = response.data;
-                this.passport = response.passport;
-                this.age = response.age;
-                this.occupation = response.occupation;
-                this.citizenship = response.citizenship;
-                this.nbPeople = response.nbPeople;
-                this.menu = response.menu;
-                this.date = response.date;
-                this.allergies = response.allergies;
-                this.diet = response.diet;
-                this.smokingArea = response.smokingArea;
+                var response = await axios.get(`http://localhost:5000/bookings/`);
+                this.items = response.data;
+                var cpt = 0;
+                for (let index = 0; index < this.items.length; index++) {
+                    if (this.items[index].users_id == this.id) {
+                        this.myItems[cpt] = this.items[index];
+                        cpt++;
+                    }
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -132,9 +126,13 @@ export default {
         goToBooking() {
             this.booking = 1;
         },
-        goToProfile() {
+        async goToProfile() {
             this.booking = 0;
             this.modifProfile = 0;
+            // const id = this.id;
+            // window.location.reload();
+            // this.id = id;
+            this.getUser();
         },
         goToModifProfile() {
             this.modifProfile = 1;

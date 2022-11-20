@@ -77,7 +77,7 @@ router.get('/dates/:date', showDateByDate);
 router.post('/dates', createDate);
 
 // Update date
-router.put('/datess/:date', updateDate);
+router.put('/dates/:date', updateDate);
 
 // Delete date
 router.delete('/dates/:date', deleteDate);

@@ -176,75 +176,97 @@ export default {
         },
         async createBooking() {
             try {
-                // const res = await axios.get(`http://localhost:5000/dates/${this.date + " " + this.timeSlot}`);
-                // console.log(res.data);
-                // if (res.data != "") {
-                //     if (this.smoking == 1) {
-                //         if (this.nbPeople > res.data.smokingSeats) {
-                //             alert("Not enough space in the smoking area");
-                //         }
-                //     } else {
-                //         if (this.nbPeople > res.data.nonSmokingSeats) {
-                //             alert("Not enough space in the non-smoking area");
-                //         }
-                //     }
-                // } else {
-                //     if (this.smoking == 1 && this.nbPeople <= 10) {
-                //         await axios.post("http://localhost:5000/dates/", {
-                //             date : this.date + " " + this.timeSlot,
-                //             smokingSeats: (10 - parseInt(this.nbPeople)),
-                //             nonSmokingSeats: 40
-                //         });
-                //     } else if(this.smoking == 0 && this.nbPeople <= 40){
-                //         await axios.post("http://localhost:5000/dates/", {
-                //             date : this.date + " " + this.timeSlot,
-                //             smokingSeats: 10,
-                //             nonSmokingSeats: (40 - parseInt(this.nbPeople))
-                //         });
-                //     } else {
-                //         alert("We're sorry, we only accept up to 10 people ine the smoking area and up to 40 in the non-smoking area");
-                //     }
-
-                // }
-
                 if (this.firstname != "" && this.lastname != "" && this.nbPeople != "" && this.menu != "" && this.date != "" && this.timeSlot != "" && this.smoking != "") {
-                    await axios.post('http://localhost:5000/bookings', {
-                        users_id: this.id,
-                        firstname: this.firstname,
-                        lastname: this.lastname,
-                        passport: this.passport,
-                        age: this.age,
-                        occupation: this.occupation,
-                        citizenship: this.citizenship,
-                        nbPeople: this.nbPeople,
-                        menu: this.menu,
-                        date: this.date + " " + this.timeSlot,
-                        allergies: this.allergies,
-                        diet: this.diet,
-                        smoking: this.smoking
-                    });
-                    const response = await axios.get(`http://localhost:5000/users/${this.id}`);
-                    const email = response.data.email;
-                    const password = response.data.password;
-                    const firstname = response.data.firstname;
-                    const lastname = response.data.lastname;
-                    const phoneNumber = response.data.phoneNumber;
-                    const nbBooking = response.data.nbBooking;
-                    await axios.put(`http://localhost:5000/users/${this.id}`, {
-                        email: email,
-                        password: password,
-                        firstname: firstname,
-                        lastname: lastname,
-                        phoneNumber: phoneNumber,
-                        nbBooking: nbBooking+1
-                    });
-                    this.back();
+                    const res = await axios.get(`http://localhost:5000/dates/${this.date + " " + this.timeSlot}`);
+                    if (res.data != "") {
+                        if (this.smoking == 1) {
+                            if (this.nbPeople > res.data.smokingSeats) {
+                                alert(`Not enough room in the smoking area. \nPlease be advised that we currently accept a maximum of ${res.data.smokingSeats} guests in the smoking area.`);
+                            } else {
+                                this.updateRestoSmoking(res.data);
+                                this.newBooking();
+                            }
+                        } else {
+                            if (this.nbPeople > res.data.nonSmokingSeats) {
+                                alert(`Not enough room in the non-smoking area. \nPlease be advised that we currently accept a maximum of ${res.data.nonSmokingSeats} guests in the non-smoking area.`);
+                            } else {
+                                this.updateResto(res.data);
+                                this.newBooking();
+                            }
+                        }
+                    } else {
+                        if (this.smoking == 1 && this.nbPeople <= 10) {
+                            await axios.post("http://localhost:5000/dates/", {
+                                date: this.date + " " + this.timeSlot,
+                                smokingSeats: (10 - parseInt(this.nbPeople)),
+                                nonSmokingSeats: 40
+                            });
+                            this.newBooking();
+                        } else if (this.smoking == 0 && this.nbPeople <= 40) {
+                            await axios.post("http://localhost:5000/dates/", {
+                                date: this.date + " " + this.timeSlot,
+                                smokingSeats: 10,
+                                nonSmokingSeats: (40 - parseInt(this.nbPeople))
+                            });
+                            this.newBooking();
+                        } else {
+                            alert(`We apologize for the inconvenience. We only accept up to 10 guests in the smoking area and 40 in the non-smoking area.`);
+                        }
+                    }
                 } else {
                     alert('Please fill in all the fields of the form.');
                 }
             } catch (error) {
                 console.log(error);
             }
+        },
+        async updateRestoSmoking(res){
+            await axios.put(`http://localhost:5000/dates/${this.date + " " + this.timeSlot}`, {
+                resto_id: res.resto_id,
+                smokingSeats: (res.smokingSeats - parseInt(this.nbPeople)),
+                nonSmokingSeats: res.nonSmokingSeats
+            });
+        },
+        async updateResto(res){
+            await axios.put(`http://localhost:5000/dates/${this.date + " " + this.timeSlot}`, {
+                resto_id: res.resto_id,
+                smokingSeats: res.smokingSeats,
+                nonSmokingSeats: (res.nonSmokingSeats - parseInt(this.nbPeople))
+            });
+        },
+        async newBooking() {
+            await axios.post('http://localhost:5000/bookings', {
+                users_id: this.id,
+                firstname: this.firstname,
+                lastname: this.lastname,
+                passport: this.passport,
+                age: this.age,
+                occupation: this.occupation,
+                citizenship: this.citizenship,
+                nbPeople: this.nbPeople,
+                menu: this.menu,
+                date: this.date + " " + this.timeSlot,
+                allergies: this.allergies,
+                diet: this.diet,
+                smoking: this.smoking
+            });
+            const response = await axios.get(`http://localhost:5000/users/${this.id}`);
+            const email = response.data.email;
+            const password = response.data.password;
+            const firstname = response.data.firstname;
+            const lastname = response.data.lastname;
+            const phoneNumber = response.data.phoneNumber;
+            const nbBooking = response.data.nbBooking;
+            await axios.put(`http://localhost:5000/users/${this.id}`, {
+                email: email,
+                password: password,
+                firstname: firstname,
+                lastname: lastname,
+                phoneNumber: phoneNumber,
+                nbBooking: nbBooking + 1
+            });
+            alert("Your reservation has been successfully processed. We are looking forward to welcoming you.");
+            this.back();
         }
     }
 };

@@ -39,7 +39,7 @@ export const createDate = (req, res) => {
 // Update booking
 export const updateDate = (req, res) => {
     const data = req.body;
-    const date = req.body.date;
+    const date = req.params.date;
     updateDateByDate(data, date, (err, results) => {
         if (err) {
             res.send(err);

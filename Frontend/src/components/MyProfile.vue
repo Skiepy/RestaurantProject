@@ -1,3 +1,3 @@
 <template>
-    <!-- Modify profile -->
+    UPDATE PROFILE
 </template>
