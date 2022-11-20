@@ -25,6 +25,7 @@
                 <td>{{item.nbPeople}}</td>
                 <td>{{item.menu}}</td>
                 <td>{{item.date}}</td>
+                <td>{{ this.price }}€</td>
                 <td>
                     <button><RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking</RouterLink></button>
                     <button>DELETE</button>
@@ -70,7 +71,8 @@ export default {
             booking: "0",
             modifProfile: "0",
             items : [],
-            myItems: []
+            myItems: [],
+            price : ""
         };
     },
     methods: {
@@ -134,6 +136,18 @@ export default {
         },
         goToModifProfile() {
             this.modifProfile = 1;
+        },
+        computePrice(){
+            this.price = 1;
+            if (this.menu == "Starter + main course + dessert") {
+                this.price = parseInt(this.nbBooking) * 250;
+            } else if (this.menu == "Starter + Main course"){
+                this.price = parseInt(this.nbBooking) * 210;
+            } else if (this.menu == "Main course + dessert"){
+                this.price = parseInt(this.nbBooking) * 200;
+            } else {
+                this.price = parseInt(this.nbBooking) * 120;
+            }
         }
     },
     beforeMount() {

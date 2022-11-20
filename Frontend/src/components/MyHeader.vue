@@ -6,8 +6,8 @@
       <nav id="header-nav">
 
         <div id="tab-links">
-          <router-link class="rl" to="@/views/HomeView">HOME </router-link> |
-          <router-link class="rl" to="@/views/MenuView">MENU </router-link>
+          <router-link class="rl" to="/">HOME </router-link> |
+          <router-link class="rl" to="/menu">MENU </router-link>
         </div>
 
         <div id="titre">
@@ -15,8 +15,8 @@
         </div>
 
         <div id="tab-links">
-          <router-link class="rl" to="@/views/AboutView">ABOUT </router-link> |
-          <router-link class="rl" to="@/views/ProfileView">PROFILE </router-link>
+          <router-link class="rl" to="/about">ABOUT </router-link> |
+          <router-link class="rl" to="/profile">PROFILE </router-link>
         </div>
 
       </nav>
