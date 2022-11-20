@@ -3,7 +3,7 @@
     <div class="menu">
         <img src="@/assets/31046_menu-border-png.png" alt="" class="cadre">   
         <div class="plats">
-        <p class="title">APPETIZER</p>
+        <p class="title" style="margin-top : 30px">APPETIZER</p>
         <p class="titre">Oysters // Sabayon of pearls tapioca</p>
         </div>
         <img src="@/assets/paragraph-divider-23.png" alt="" class="divider">
@@ -54,6 +54,7 @@ export default {
 <style scoped>
 @import url('https://fonts.cdnfonts.com/css/papyrus');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Elsie:wght@900&display=swap');
 
 .menu{
     padding-top: 5%;
@@ -76,7 +77,8 @@ h1 {
     align-items: center;
     line-height: 52px;
     font-weight: 100;
-    font-family: papyrus;
+    font-family: 'Elsie', cursive;
+
 }
 
 .details{
@@ -106,8 +108,8 @@ h1 {
     width: 5%;
 }
 .title{
-    padding-top: 30px;
-    font-family: papyrus;
+    padding-top: 20px;
+    font-family: 'Elsie', cursive;
     font-size: 20px;
 }
 </style>
