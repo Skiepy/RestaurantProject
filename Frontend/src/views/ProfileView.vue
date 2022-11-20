@@ -1,9 +1,8 @@
 <template>
-    <!-- Si j'ai le temps : penser à faire un check en loadant la page pour savoir si l'utilisateur est bien connecté (isLogged dans la DB) 
-        pour éviter d'avoir accès à la page de profil en ayant juste l'id de l'utilisateur -->
     <div v-if="booking == 0">
         <h1>Profile</h1>
         <h2>Welcome back {{ firstname }}</h2>
+        <button class="button logOut" @click="logOutUser()">Home</button>
         <h2>A refaire (schéma)</h2>
         <label>Firstname :</label>
         <p>{{ firstname }}</p>
@@ -15,17 +14,16 @@
         <p>{{ nbBooking }}</p>
         <br>
         <button class="button booking" @click="goToBooking()">Make a booking</button>
-        <button class="button logOut" @click="changeConnectionState(0)">Log Out</button>
+        <button class="button modProfile" @click="goToModifProfile()">Modify Profile</button>
+        <button class="button logOut" @click="logOutUser()">Log Out</button>
         <div v-if="nbBooking > 0">
             <label v-if="nbBooking == 1">Your booking</label>
             <label v-if="nbBooking > 1">Your bookings</label>
-            <!-- Avec un v-for faire apparaitre toutes les résas -->
             <tr v-for="item in myItems" :key="item.booking_id">
                 <td>{{ item.lastname }}</td>
                 <td>{{ item.nbPeople }}</td>
                 <td>{{ item.menu }}</td>
                 <td>{{ item.date }}</td>
-                <td>{{ this.price }}€</td>
                 <td>
                     <button>
                         <RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking
@@ -37,12 +35,16 @@
         </div>
     </div>
     <div v-if="booking == 1">
-        <MyBooking :id="this.id" @back="goToProfile()" @connected="changeConnectionState($event)"></MyBooking>
+        <MyBooking :id="this.id" @back="goToProfile()" @connected="logOutUser()"></MyBooking>
+    </div>
+    <div v-if="modifProfile == 1">
+        <MyProfile :id="this.id" @back="goToProfile()"></MyProfile>
     </div>
 </template>
 
 <script>
 import MyBooking from '@/components/MyBooking.vue';
+import MyProfile from '@/components/MyProfile.vue';
 import axios from 'axios';
 
 export default {
@@ -74,8 +76,7 @@ export default {
             booking: "0",
             modifProfile: "0",
             items: [],
-            myItems: [],
-            price: ""
+            myItems: []
         };
     },
     methods: {
@@ -95,7 +96,7 @@ export default {
                 // Other
                 this.booking = "0";
                 this.modifProfile = "0";
-                this.$router.push('/login');
+                this.$router.push('/');
             }
         },
         async getUser() {
@@ -140,23 +141,28 @@ export default {
         goToModifProfile() {
             this.modifProfile = 1;
         },
-        computePrice() {
-            this.price = 1;
-            if (this.menu == "Starter + main course + dessert") {
-                this.price = parseInt(this.nbBooking) * 250;
-            } else if (this.menu == "Starter + Main course") {
-                this.price = parseInt(this.nbBooking) * 210;
-            } else if (this.menu == "Main course + dessert") {
-                this.price = parseInt(this.nbBooking) * 200;
-            } else {
-                this.price = parseInt(this.nbBooking) * 120;
-            }
-        },
         async checkLogIn() {
             var response = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
             response = response.data;
-            if (response.isLogged == 0 || this.$route.params.id == 0) {
+            if (response.isLogged == 0) {
                 this.$router.push('/login');
+            }
+        },
+        async logOutUser() {
+            try {
+                const res = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+                await axios.put(`http://localhost:5000/users/${this.$route.params.id}`, {
+                    email: res.data.email,
+                    password: res.data.password,
+                    firstname: res.data.firstname,
+                    lastname: res.data.lastname,
+                    phoneNumber: res.data.phoneNumber,
+                    nbBooking: res.data.nbBooking,
+                    isLogged: 0
+                });
+                this.changeConnectionState(0);
+            } catch (error) {
+                console.log(error);
             }
         }
     },
@@ -164,6 +170,6 @@ export default {
         this.checkLogIn();
         this.getId(this.$route.params.id);
     },
-    components: { MyBooking }
+    components: { MyBooking, MyProfile }
 };
 </script>

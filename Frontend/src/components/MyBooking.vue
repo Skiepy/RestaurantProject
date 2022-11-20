@@ -140,8 +140,6 @@
 
 <script>
 // import axios
-// import axios from "axios";
-
 import axios from 'axios';
 
 export default {
@@ -169,7 +167,7 @@ export default {
     },
     methods: {
         logOut() {
-            this.$emit('connected', 0);
+            this.$emit('connected');
         },
         back() {
             this.$emit('back');
