@@ -1,10 +1,11 @@
 <template>
-    <div class="about">
+    <MyHeader></MyHeader>
+    <div class="menu">
         <h1>Today's Menu</h1>
         <div class="plats">
         <p class="titre">APPETIZER</p>
-        <p class="titre">Oysters and pearls</p>
-        <p class="details">home made pickles, kumquat, eggplant brûlée</p>
+        <p class="titre">Oysters</p>
+        <p class="details">12</p>
         <p class="titre">Sabayon of pearls tapioca</p>
         </div>
         <div class="plats">
@@ -31,12 +32,26 @@
         <p class="details">RED: Mary Rivers, Pinot Noir, Sonoma Coast</p>
         </div>
     </div>
+    <MyFooter></MyFooter>
 </template>
+
+<script>
+import MyHeader from '@/components/MyHeader.vue';
+import MyFooter from '@/components/MyFooter.vue';
+
+export default {
+  name: 'HomePage',
+
+  components: {
+    MyHeader, MyFooter
+  }
+}
+</script>
 
 <style>
 @import url('https://fonts.cdnfonts.com/css/papyrus');
 
-.about{
+.menu{
     border-width:1px;
     border-style:outset;
     border-color: #dbb172;  

@@ -19,19 +19,19 @@
                   <div>      </div>
                     <div class="col-sm-4 col-md-3 item">
                         <h3>BOOK A TABLE</h3>
-                            <ul><li><router-link to="/">CONTACT US</router-link></li></ul>
+                            <ul><li><a><router-link to="http://www.manoir-aulnay.com/">CONTACT US</router-link></a></li></ul>
                     </div>
                     <div class="vl"></div>
                     <div class="col-sm-4 col-md-3 item">
                         <h3>ADDRESS</h3>
                         <ul>
-                            <li><router-link to="https://goo.gl/maps/PGZdJyXFqPv91bXC9">LOCATION ON GOOGLE MAPS</router-link></li>
+                          <li><a><router-link to="https://goo.gl/maps/DQiVGYANeTZEQa1T8">LOCATION ON GOOGLE MAPS</router-link></a></li>
                         </ul>
                     </div>
                     <div class="vl"></div>
                     <div class="col-sm-4 col-md-3 item">
                         <h3>NEW CONCEPT</h3>
-                            <ul><li><router-link to="/">LEARN MORE ABOUT US</router-link></li></ul>
+                            <ul><li><a><router-link to="/about">LEARN MORE ABOUT US</router-link></a></li></ul>
                     </div>
                     <div></div>                 
                     <!-- <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a> -->
