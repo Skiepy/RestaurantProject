@@ -62,6 +62,7 @@
 }
 
 .footer-clean {
+  text-align:center;
   padding:50px 0;
   background-color:#dbb172;
   color: #1E3551;
