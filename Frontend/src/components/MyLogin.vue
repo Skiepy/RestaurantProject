@@ -50,8 +50,6 @@ export default {
                                 password: this.password,
                                 hashed: this.items[index].password
                             });
-                            // this.$emit('connected', 1);
-                            // this.$emit('id', this.items[index].users_id);
                             this.id =  this.items[index].users_id;
                         }
                     }
@@ -61,6 +59,16 @@ export default {
                     if (!testPassword.data) {
                         alert("Wrong email or password.");
                     } else {
+                        const res = await axios.get(`http://localhost:5000/users/${this.id}`);
+                        await axios.put(`http://localhost:5000/users/${this.id}`,{
+                            email : res.data.email,
+                            password : res.data.password,
+                            firstname : res.data.firstname,
+                            lastname : res.data.lastname,
+                            phoneNumber : res.data.phoneNumber,
+                            nbBooking : res.data.nbBooking,
+                            isLogged : 1
+                        });
                         this.$router.push(`/profile/${this.id}`);
                     }
                 } catch (err) {
