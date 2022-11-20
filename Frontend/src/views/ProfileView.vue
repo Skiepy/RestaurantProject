@@ -146,7 +146,8 @@ export default {
             try {
                 var response = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
                 response = response.data;
-                if (response.isLogged == 0) {
+                console.log(response)
+                if (response.isLogged == 0 || response == "") {
                     this.$router.push('/login');
                 }
             } catch (error) {

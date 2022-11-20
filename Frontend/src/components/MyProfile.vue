@@ -98,8 +98,8 @@ export default {
         },
         async deleteUser() {
             this.deleteBooking();
-            await axios.delete(`http://localhost:5000/users/1`); // A modif avec ${this.$route.params.id}
-            alert('Done')
+            await axios.delete(`http://localhost:5000/users/${this.$route.params.id}`);
+            this.$router.push("/");
         },
         async deleteBooking() {
             try {
@@ -107,28 +107,28 @@ export default {
                 this.items = response.data;
                 var cpt = 0;
                 for (let index = 0; index < this.items.length; index++) {
-                    if (this.items[index].users_id == 1) {
+                    if (this.items[index].users_id == this.$route.params.id) {
                         this.myItems[cpt] = this.items[index];
                         cpt++;
                     }
                 }
-
-                for (const item in this.myItems) {
-                    const res = await axios.get(`http://localhost:5000/dates/${item.date}`)
-                    if (item.smoking == 1) {
-                        await axios.put(`http://localhost:5000/dates/${item.date}`, {
+                console.log(this.myItems);
+                for (let index = 0; index < this.myItems.length; index++) {
+                    const res = await axios.get(`http://localhost:5000/dates/${this.myItems[index].date}`)
+                    if (this.myItems[index].smoking == 1) {
+                        await axios.put(`http://localhost:5000/dates/${this.myItems[index].date}`, {
                             resto_id: res.data.resto_id,
-                            smokingSeats: (res.data.smokingSeats + parseInt(item.nbPeople)),
+                            smokingSeats: (res.data.smokingSeats + parseInt(this.myItems[index].nbPeople)),
                             nonSmokingSeats: res.data.nonSmokingSeats
                         });
                     } else {
-                        await axios.put(`http://localhost:5000/dates/${item.date}`, {
+                        await axios.put(`http://localhost:5000/dates/${this.myItems[index].date}`, {
                             resto_id: res.data.resto_id,
                             smokingSeats: res.data.smokingSeats,
-                            nonSmokingSeats: (res.data.nonSmokingSeats + parseInt(item.nbPeople))
+                            nonSmokingSeats: (res.data.nonSmokingSeats + parseInt(this.myItems[index].nbPeople))
                         });
                     }
-                    await axios.delete(`http://localhost:5000/bookings/${item.booking_id}`)
+                    await axios.delete(`http://localhost:5000/bookings/${this.myItems[index].booking_id}`)
                 }
             } catch (error) {
                 console.log(error);
