@@ -23,6 +23,7 @@
     border-width:1px;
     border-style:outset;
     border-color: #dbb172;  
+    background-color: #f4f4f1;
 }
 
 h1 {
@@ -41,11 +42,12 @@ h1 {
     color:rgba(0, 0, 0, 0.633);
 }
 
-.plats{
+.titre{
     font-family: papyrus;
     font-size: 20px;
     align-items: center;
     color:rgba(0, 0, 0, 0.633);
 }
+
 
 </style>

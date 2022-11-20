@@ -19,15 +19,14 @@
           meal by a myriad of satellite plates with marked flavours.</p>
       </div>
     </div>
-
-    <div class="DivPersonnes">
+    <div class="DivPersonnes2">
       <div class="TextDivPersonnes2">
-        <p class="BigTextBlue">Chef Etchebest</p>
+        <p class="BigTextBlue2">Chef Etchebest</p>
         <p class="MiddleTextBlue">In 2000, his friend Michel Portos challenged him: the MOF, the competition for the
           excellence of French know-how. True to his values, Philippe Etchebest gives everything and enters the
           prestigious circle of the best workers in France.</p>
       </div>
-      <img src="@/assets/etchebest.png" alt="" class="chefPic">
+      <img src="@/assets/etchebest.png" alt="" class="chefPic2" >
     </div>
 
     <div id="carrousel">
@@ -87,7 +86,7 @@ body {
 .back-video {
   position: absolute;
   right: 0;
-  bottom: -20%;
+  bottom: -15%;
   z-index: -1;
 }
 
@@ -129,6 +128,12 @@ body {
   color: #1E3551;
   font-size: 50px;
 }
+.BigTextBlue2 {
+  font-family: 'Bebas Neue', cursive;
+  text-align: right;
+  color: #1E3551;
+  font-size: 50px;
+}
 
 .MiddleText {
   font-family: 'Playfair Display', serif;
@@ -164,12 +169,21 @@ body {
 
 
 .DivPersonnes {
+  margin-bottom:100px;
+  margin-left:20px;
   padding: 60px;
+  height: 500px;
+  background-color: white;
+  color: #1E3551;
+}
+
+.DivPersonnes2 {
+  padding: 60px;
+  margin-right:20px;
   padding-top: 60px;
   height: 500px;
   background-color: white;
   color: #1E3551;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .TextDivPersonnes {
@@ -180,14 +194,21 @@ body {
 
 .TextDivPersonnes2 {
   margin-top: 20px;
-  margin-right: 550px;
-
+  margin-left: 100px;
+  margin-right: 450px;
 }
 
 .chefPic {
   width: 400px;
   float: left;
   display: block;
+}
+
+.chefPic2 {
+  width: 400px;
+  display : flex;
+  float: right;
+  margin-top: -300px;
 }
 
 section .container {
