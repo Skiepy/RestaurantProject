@@ -2,16 +2,33 @@
     <div class="about">
         <h1>Today's Menu</h1>
         <div class="plats">
-        <p class="titre">FIRST COURSE</p>
-        <p class="manger">Canard Laqué</p>
+        <p class="titre">APPETIZER</p>
+        <p class="titre">Oysters and pearls</p>
+        <p class="details">home made pickles, kumquat, eggplant brûlée</p>
+        <p class="titre">Sabayon of pearls tapioca</p>
+        </div>
+        <div class="plats">
+        <p class="titre">STARTERS</p>
+        <p class="titre">Pâté en crôute</p>
+        <p class="details">home made pickles, kumquat, eggplant brûlée</p>
+        <p class="titre">Roasted Veal Head</p>
+        <p class="details">big deep-fried langoustine with mustard's bran by bouillon mousse, gribiche sauce</p>
         </div>
         <div class="plats">
         <p class="titre">MAIN COURSE</p>
-        <p class="manger">Canard Laqué</p>
+        <p class="titre">Grilled 'Japanese Wagyu' sirloin</p>
+        <p class="details">seasonal vegetables, red wine sauce with casis</p>
+        <p class="titre">Green Seabass</p>
+        <p class="details">green vegetables, artichoke, Bouillabaisse sauce with safran</p>
         </div>
         <div class="plats">
         <p class="titre">DESERT</p>
-        <p class="manger">Canard Laqué</p>
+        <p class="details">Chef's inspiration</p>
+        </div>
+        <div class="plats">
+        <p class="titre">WINE</p>
+        <p class="details">WHITE: Reisling, Chardonnay</p>
+        <p class="details">RED: Mary Rivers, Pinot Noir, Sonoma Coast</p>
         </div>
     </div>
 </template>
@@ -27,27 +44,35 @@
 }
 
 h1 {
-  font-size: 30px;
-  align-items: center;
-  color: #1E3551;
-  line-height: 52px;
-  font-weight: 100;
-  font-family: 'Great Vibes', cursive;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    align-items: center;
+    color:rgba(0, 0, 0, 0.356);
+    line-height: 52px;
+    font-weight: 100;
+    font-family: 'Great Vibes', cursive;
 }
 
-.manger{
+.details{
     font-family: papyrus;
     font-size: 10px;
     align-items: center;
-    color:rgba(0, 0, 0, 0.633);
+    color:rgba(0, 0, 0, 0.356);
 }
 
 .titre{
-    font-family: papyrus;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-family: 'Great Vibes', cursive;
     font-size: 20px;
     align-items: center;
     color:rgba(0, 0, 0, 0.633);
 }
-
-
+.plats{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 </style>
