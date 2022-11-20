@@ -82,6 +82,7 @@ h1 {
   padding-right: 10px;
   padding-left: 10px;
   color: #dbb172;
+  text-decoration: none;
 }
 
 .rl:hover {

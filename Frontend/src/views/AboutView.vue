@@ -1,12 +1,11 @@
 <template>
-  <MyHeader></MyHeader>
   <div class="about">
+    <MyHeader></MyHeader>
     <div>
       <video autoplay muted loop plays-inline id="myVideo" class="back-video">
         <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
       </video>
-      <p class="BigText">"IN THE CENTRE OF THE PARISIAN GOLDEN TRIANGLE, A GASTRONOMIC RESTAURANT, NESTLED WITHIN A
-        SUPERB 19TH CENTURY PRIVATE MANSION."</p>
+      <p class="BigText">ABOUT US</p>
     </div>
   </div>
 </template>
@@ -32,7 +31,17 @@ body {
 .back-video {
   position: absolute;
   right: 0;
-  bottom: -15%;
+  bottom: 0;
   z-index: -1;
+}
+
+.BigText {
+  /* Debut des polices pour le texte */
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+  color: #f4f4f1;
+  margin:10px;
+  font-size: 150px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
 }
 </style>
