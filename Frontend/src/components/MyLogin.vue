@@ -1,7 +1,6 @@
 <template>
     <div class="login">
-        <label class="labelTitle">Login</label>
-        <button class="button register" @click="goToRegister">Register</button>
+        <label class="labelTitle">LOGIN</label>      
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
@@ -18,6 +17,7 @@
 
         <div class="control">
             <button class="button is-success" @click="connection">Login</button>
+            <button class="button register" @click="goToRegister">Register</button>
         </div>
     </div>
 </template>
@@ -85,3 +85,43 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.login{
+    padding-top: 20%;
+    padding-bottom: 20%;
+    background-color: #f4f4f1;
+}
+.labelTitle{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #1E3551;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    font-size: medium;
+}
+
+.field{
+    padding-top: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #1E3551;
+    margin-bottom: 40px;
+    align-items: center;
+}
+.button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    /* outline: 0; */
+    background-color: #dbb172;
+    width: 7%;
+    border: 0;
+    padding: 15px;
+    color:#f4f4f1;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer; 
+    margin-right: 10px;  
+    margin-left: 10px;  
+}
+
+</style>

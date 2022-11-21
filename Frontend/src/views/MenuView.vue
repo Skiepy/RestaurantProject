@@ -62,7 +62,7 @@ export default {
     border-style:outset;
     border-color: #dbb172;  
     background-color: #f4f4f1;
-    padding-bottom: 5%;
+    padding-bottom: 15%;
 }
 .cadre{
     right : 20%;
