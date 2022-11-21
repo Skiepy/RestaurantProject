@@ -1,6 +1,6 @@
 <template>
   <div class="homePage">
-    <MyHeader></MyHeader>
+    <MyHeader @top="gototop()"></MyHeader>
     <div>
       <video autoplay muted loop plays-inline id="myVideo" class="back-video">
         <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
@@ -26,7 +26,7 @@
           excellence of French know-how. True to his values, Philippe Etchebest gives everything and enters the
           prestigious circle of the best workers in France.</p>
       </div>
-      <img src="@/assets/etchebest.png" alt="" class="chefPic2" >
+      <img src="@/assets/etchebest.png" alt="" class="chefPic2">
     </div>
 
     <section>
@@ -51,8 +51,15 @@ export default {
 
   components: {
     MyFooter, MyHeader, Slider
-  }
-}
+  },
+
+  methods: {
+    gototop() {
+      window.scroll(0,0);
+    }
+  },
+};
+
 
 </script>
 
@@ -71,14 +78,6 @@ body {
   right: 0;
   bottom: -15%;
   z-index: -1;
-}
-
-#plat2 {
-  margin-left: 50px;
-  width: 30%;
-  max-height: 100%;
-  float: left;
-  display: block;
 }
 
 .BigText {
@@ -135,8 +134,8 @@ body {
 
 
 #DivPersonnes {
-  margin-bottom:100px;
-  margin-left:20px;
+  margin-bottom: 100px;
+  margin-left: 20px;
   padding: 60px;
   height: 500px;
   background-color: white;
@@ -145,7 +144,7 @@ body {
 
 #DivPersonnes2 {
   padding: 60px;
-  margin-right:20px;
+  margin-right: 20px;
   padding-top: 60px;
   height: 500px;
   background-color: white;
@@ -172,7 +171,7 @@ body {
 
 .chefPic2 {
   width: 400px;
-  display : flex;
+  display: flex;
   float: right;
   margin-top: -300px;
 }
@@ -208,6 +207,14 @@ section .text-container .text-box {
   }
 }
 
+.slides {
+  padding-left: 2000px;
+  padding-right: 2000px;
+  margin-bottom: 20%;
+  margin-top: 20%;
+  align-items: center;
+}
+
 .reveal {
   position: relative;
   opacity: 0;
@@ -219,14 +226,6 @@ section .text-container .text-box {
 
 .active.fade-bottom {
   animation: fade-bottom 1s ease-in;
-}
-
-.active.fade-left {
-  animation: fade-left 1s ease-in;
-}
-
-.active.fade-right {
-  animation: fade-right 1s ease-in;
 }
 
 @keyframes fade-bottom {
@@ -241,35 +240,4 @@ section .text-container .text-box {
   }
 }
 
-.slides{
-  padding-left: 2000px;
-  padding-right: 2000px;
-  margin-bottom: 20%;
-  margin-top: 20%;
-  align-items: center;
-}
-
-@keyframes fade-left {
-  0% {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-right {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
 </style>

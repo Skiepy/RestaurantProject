@@ -27,7 +27,7 @@ export const getBookingByUserId = (id, result) => {
 
 // Get single Booking
 export const getBookingById = (id, result) => {
-    db.query("SELECT * FROM dbresto.booking WHERE users_id = ?", [id], (err, results) => {
+    db.query("SELECT * FROM dbresto.booking WHERE booking_id = ?", [id], (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);

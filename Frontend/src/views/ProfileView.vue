@@ -13,12 +13,12 @@
         <label>Number of bookings :</label>
         <p>{{ nbBooking }}</p>
         <br>
-        <button class="button booking" @click="goToBooking()">Make a booking</button>
-        <button class="button modProfile" @click="goToModifProfile()">Modify Profile</button>
+        <button class="button booking" @click="goToBooking">Make a booking</button>
+        <button class="button modProfile" @click="goToModifProfile">Modify Profile</button>
         <button class="button logOut" @click="logOutUser()">Log Out</button>
         <div v-if="nbBooking > 0">
-            <label v-if="nbBooking == 1">Your booking</label>
-            <label v-if="nbBooking > 1">Your bookings</label>
+            <label v-if="nbBooking == 1">My booking</label>
+            <label v-if="nbBooking > 1">My bookings</label>
             <tr v-for="item in myItems" :key="item.booking_id">
                 <td>{{ item.lastname }}</td>
                 <td>{{ item.nbPeople }}</td>
@@ -29,7 +29,7 @@
                         <RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking
                         </RouterLink>
                     </button>
-                    <button>DELETE</button>
+                    <button @click="deleteBooking(item.booking_id)">DELETE</button>
                 </td>
             </tr>
         </div>
@@ -133,19 +133,24 @@ export default {
         goToBooking() {
             this.booking = 1;
         },
-        async goToProfile() {
+        goToProfile() {
             this.booking = 0;
             this.modifProfile = 0;
             this.getUser();
         },
         goToModifProfile() {
+            this.booking = 2;
             this.modifProfile = 1;
         },
         async checkLogIn() {
-            var response = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
-            response = response.data;
-            if (response.isLogged == 0) {
-                this.$router.push('/login');
+            try {
+                var response = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+                response = response.data;
+                if (response.isLogged == 0 || response == "") {
+                    this.$router.push('/login');
+                }
+            } catch (error) {
+                console.log(error);
             }
         },
         async logOutUser() {
@@ -161,6 +166,45 @@ export default {
                     isLogged: 0
                 });
                 this.changeConnectionState(0);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async deleteBooking(bookingId) {
+            try {
+                var resp = await axios.get(`http://localhost:5000/users/${this.$route.params.id}`);
+                resp = resp.data;
+
+                await axios.put(`http://localhost:5000/users/${this.$route.params.id}`, {
+                    email : resp.email,
+                    password : resp.password,
+                    firstname : resp.firstname,
+                    lastname : resp.lastname,
+                    phoneNumber : resp.phoneNumber,
+                    nbBooking : parseInt(resp.nbBooking)-1,
+                    isLogged : resp.isLogged
+                });
+
+                console.log("aod " + bookingId)
+                var response = await axios.get(`http://localhost:5000/bookings/${bookingId}`);
+                response = response.data;
+
+                const res = await axios.get(`http://localhost:5000/dates/${response.date}`)
+                if (response.smoking == 1) {
+                    await axios.put(`http://localhost:5000/dates/${response.date}`, {
+                        resto_id: res.data.resto_id,
+                        smokingSeats: (res.data.smokingSeats + parseInt(response.nbPeople)),
+                        nonSmokingSeats: res.data.nonSmokingSeats
+                    });
+                } else {
+                    await axios.put(`http://localhost:5000/dates/${response.date}`, {
+                        resto_id: res.data.resto_id,
+                        smokingSeats: res.data.smokingSeats,
+                        nonSmokingSeats: (res.data.nonSmokingSeats + parseInt(response.nbPeople))
+                    });
+                }
+                await axios.delete(`http://localhost:5000/bookings/${bookingId}`);
+                location.reload();
             } catch (error) {
                 console.log(error);
             }

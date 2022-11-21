@@ -51,8 +51,8 @@ export const updateDate = (req, res) => {
 
 // Delete booking
 export const deleteDate = (req, res) => {
-    const date = req.body.date;
-    deleteDateByDate(id, (err, results) => {
+    const date = req.params.date;
+    deleteDateByDate(date, (err, results) => {
         if (err) {
             res.send(err);
         } else {
