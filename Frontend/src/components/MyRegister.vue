@@ -1,6 +1,6 @@
 <template>
     <div class="register">
-        <label class="labelTitle">Login</label>
+        <label class="labelTitle">REGISTER</label>
         <button class="button register" @click="goToLogin">Login</button>
 
         <div class="field">
