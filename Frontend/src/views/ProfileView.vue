@@ -26,7 +26,7 @@
                 <td>{{ item.date }}</td>
                 <td>
                     <button>
-                        <RouterLink :to="{ name: 'updateProfile', params: { id: item.booking_id } }">Edit your booking
+                        <RouterLink :to="{ name: 'updateBooking', params: { id: item.booking_id } }">Edit your booking
                         </RouterLink>
                     </button>
                     <button @click="deleteBooking(item.booking_id)">DELETE</button>

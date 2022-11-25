@@ -49,6 +49,12 @@ const routes = [
     name: 'updateProfile',
 
     component: () => import('../components/MyProfile.vue')
+  },
+  {
+    path: '/updateBooking/:id',
+    name: 'updateBooking',
+
+    component: () => import('../components/UpdateBooking.vue')
   }
 ]
 
