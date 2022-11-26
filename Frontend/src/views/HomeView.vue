@@ -14,7 +14,7 @@
       <div class="TextDivPersonnes">
         <p class="BigTextBlue" style="text-align: justify">Chef Chang</p>
         <p class="MiddleTextBlue">Brilliantly, he creates an instinctive, inspired and vibrantly modern style of
-          cuisine. At Le Manoir Salé, there is no settled menu, but rather a variety of dishes based on exceptional and
+          cuisine. At Le Manoir Salé, there are a variety of dishes based on exceptional and
           seasonal products. The land-sea associations, dear to the chef, are sublimated during each “sequence” of the
           meal by a myriad of satellite plates with marked flavours.</p>
       </div>
