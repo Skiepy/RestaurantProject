@@ -25,7 +25,7 @@
                     <div class="col-sm-4 col-md-3 item">
                         <h3>ADDRESS</h3>
                         <ul>
-                          <li><a><router-link to="https://goo.gl/maps/DQiVGYANeTZEQa1T8">LOCATION ON GOOGLE MAPS</router-link></a></li>
+                          <li><a href="https://goo.gl/maps/DQiVGYANeTZEQa1T8" target="_blank">LOCATION ON GOOGLE MAPS</a></li>
                         </ul>
                     </div>
                     <div class="vl"></div>
