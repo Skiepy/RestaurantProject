@@ -99,7 +99,7 @@
         <div>
             <p>Please be advised that if you wish to change the day or time of your reservation, you will need to make a
                 new reservation and then delete the old one. This can be done from your profile. <br>For all other
-                reservation modification requests, please do not hesitate to contact us by phone.<br>Thank you.</p>
+                specific requests, please do not hesitate to contact us by phone.<br>Thank you.</p>
         </div>
     </div>
 </template>
@@ -132,7 +132,9 @@ export default {
             formerSmoking: "",
             userID: "",
             response: "",
-            placeDisp: "0"
+            placeDisp: "0",
+            nbPeopleSmoking: "",
+            nbPeopleNonSmoking: ""
         };
     },
     methods: {
@@ -168,64 +170,69 @@ export default {
         back() {
             this.$router.push(`/profile/${this.userID}`)
         },
+        async checkSeats() {
+            const res = await axios.get(`http://localhost:5000/dates/${this.date}`);
+            if (this.formerSmoking == 0) {
+                switch (parseInt(this.smoking)) {
+                    case 0:
+                        if ((parseInt(res.data.nonSmokingSeats) + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople))) >= 0) {
+                            this.nbPeopleSmoking = res.data.smokingSeats;
+                            this.nbPeopleNonSmoking = res.data.nonSmokingSeats + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople));
+                            this.placeDisp = 1;
+                        } else {
+                            this.placeDisp = 0;
+                        }
+
+                        break;
+
+                    case 1:
+                        if ((parseInt(res.data.smokingSeats) - parseInt(this.nbPeople)) >= 0) {
+                            this.nbPeopleSmoking = parseInt(res.data.smokingSeats) - parseInt(this.nbPeople);
+                            this.nbPeopleNonSmoking = res.data.nonSmokingSeats + parseInt(this.formerNbPeople);
+                            this.placeDisp = 1;
+                        } else {
+                            this.placeDisp = 0;
+                        }
+
+                        break;
+                }
+            } else if (this.formerSmoking == 1) {
+                switch (parseInt(this.smoking)) {
+                    case 0:
+                        if ((parseInt(res.data.nonSmokingSeats) - parseInt(this.nbPeople)) >= 0) {
+                            this.nbPeopleSmoking = parseInt(res.data.smokingSeats) + parseInt(this.formerNbPeople);
+                            this.nbPeopleNonSmoking = res.data.nonSmokingSeats - parseInt(this.nbPeople);
+                            this.placeDisp = 1;
+                        } else {
+                            this.placeDisp = 0;
+                        }
+
+                        break;
+
+                    case 1:
+                        if ((parseInt(res.data.smokingSeats) + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople))) >= 0) {
+                            this.nbPeopleSmoking = res.data.smokingSeats + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople));
+                            this.nbPeopleNonSmoking = res.data.nonSmokingSeats;
+                            this.placeDisp = 1;
+                        } else {
+                            this.placeDisp = 0;
+                        }
+
+                        break;
+                }
+            }
+            if (this.placeDisp == 1) {
+                await axios.put(`http://localhost:5000/dates/${this.date}`, {
+                    resto_id: res.data.resto_id,
+                    smokingSeats: this.nbPeopleSmoking,
+                    nonSmokingSeats: this.nbPeopleNonSmoking
+                });
+            }
+
+        },
         async updateBooking() {
             try {
-                if (this.specialAllergies == 0) {
-                    this.allergies = "None";
-                }
-                if (this.specialDiet == 0) {
-                    this.diet = "None";
-                }
-
-                const res = await axios.get(`http://localhost:5000/dates/${this.date}`)
-                console.log("fSmok : " + this.formerSmoking + " smok : " + this.smoking);
-                console.log("fnb : " + this.formerNbPeople + " nb : " + this.nbPeople + " fnb-nb : " + (res.data.smokingSeats - parseInt(this.nbPeople)));
-                if (this.formerSmoking == this.smoking == 1) {
-                    if ((res.data.smokingSeats + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople))) >= 0) {
-                        this.placeDisp = 1;
-                    }
-                    if (this.placeDisp == 1) {
-                        await axios.put(`http://localhost:5000/dates/${this.date}`, {
-                            resto_id: res.data.resto_id,
-                            smokingSeats: res.data.smokingSeats + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople)),
-                            nonSmokingSeats: res.data.nonSmokingSeats
-                        });
-                    }
-                } else if (this.formerSmoking == this.smoking == 0) {
-                    if ((res.data.nonSmokingSeats + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople))) >= 0) {
-                        this.placeDisp = 1;
-                    }
-                    if (this.placeDisp == 1) {
-                        await axios.put(`http://localhost:5000/dates/${this.date}`, {
-                            resto_id: res.data.resto_id,
-                            smokingSeats: res.data.smokingSeats,
-                            nonSmokingSeats: res.data.nonSmokingSeats + (parseInt(this.formerNbPeople) - parseInt(this.nbPeople))
-                        });
-                    }
-                } else if ((this.formerNbPeople == 0) && (this.smoking == 1)) {
-                    if ((res.data.smokingSeats - parseInt(this.nbPeople)) >= 0) {
-                        this.placeDisp = 1;
-                    }
-                    if (this.placeDisp == 1) {
-                        await axios.put(`http://localhost:5000/dates/${this.date}`, {
-                            resto_id: res.data.resto_id,
-                            smokingSeats: res.data.smokingSeats - parseInt(this.nbPeople),
-                            nonSmokingSeats: res.data.nonSmokingSeats + parseInt(this.formerNbPeople)
-                        });
-                    }
-
-                } else if ((this.formerNbPeople == 1) && (this.smoking == 0)) {
-                    if ((res.data.nonSmokingSeats - parseInt(this.nbPeople)) >= 0) {
-                        this.placeDisp = 1;
-                    }
-                    if (this.placeDisp == 1) {
-                        await axios.put(`http://localhost:5000/dates/${this.date}`, {
-                            resto_id: res.data.resto_id,
-                            smokingSeats: res.data.smokingSeats + parseInt(this.formerNbPeople),
-                            nonSmokingSeats: res.data.nonSmokingSeats - parseInt(this.nbPeople)
-                        });
-                    }
-                }
+                await this.checkSeats();
 
                 if (this.placeDisp == 1) {
                     await axios.put(`http://localhost:5000/bookings/${this.$route.params.id}`, {
@@ -245,7 +252,7 @@ export default {
                     });
                     this.back();
                 } else {
-                    alert("There is not enough room in the selected area.")
+                    alert("Not enough seats in the selected area.");
                 }
             } catch (error) {
                 console.log(error);
