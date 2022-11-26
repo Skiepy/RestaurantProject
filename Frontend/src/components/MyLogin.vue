@@ -6,20 +6,16 @@
             <div class="control">
                 <input class="input" type="text" placeholder="Email" v-model="email" />
             </div>
-        </div>
-
-        <div class="field">
             <label class="label">Password</label>
             <div class="control">
                 <input class="input" type="password" placeholder="Password" v-model="password" />
             </div>
         </div>
-
-        <div class="control">
-            <button class="button is-success" @click="connection">Login</button>
-            <button class="button register" @click="goToRegister">Register</button>
-        </div>
-    </div>
+            <div>
+                <button class="button is-success" @click="connection">Login</button>
+                <button class="button register" @click="goToRegister">Register</button>
+            </div>
+    </div>    
 </template>
 
 <script>
@@ -95,9 +91,9 @@ export default {
 .labelTitle{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #1E3551;
-    margin-bottom: 40px;
-    padding-bottom: 40px;
-    font-size: medium;
+    margin-bottom: 70px;
+    padding-bottom: 60px;
+    font-size: 25px;
 }
 
 .field{
@@ -111,8 +107,8 @@ export default {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-transform: uppercase;
     /* outline: 0; */
-    background-color: #dbb172;
-    width: 7%;
+    background-color:  #1E3551;
+    width: 25%;
     border: 0;
     padding: 15px;
     color:#f4f4f1;
@@ -122,6 +118,30 @@ export default {
     cursor: pointer; 
     margin-right: 10px;  
     margin-left: 10px;  
+}
+
+.login{
+    position: relative;
+    z-index: 1;
+    background:#f4f4f1;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    border-radius : 2%;
+    /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+    box-shadow: rgba(30, 53, 81, 0.212) 0px 0px 0px 2px, rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    margin-top: 15%;
+}
+
+.input{
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+.control{
+    padding-top: 5px;
+    padding-bottom: 3px;
 }
 
 </style>

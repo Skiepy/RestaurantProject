@@ -1,8 +1,6 @@
 <template>
     <div class="register">
         <label class="labelTitle">REGISTER</label>
-        <button class="button register" @click="goToLogin">Login</button>
-
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
@@ -13,14 +11,14 @@
         <div class="field">
             <label class="label">Firstname</label>
             <div class="control">
-                <input class="input" type="text" placeholder="firstname" v-model="firstname" />
+                <input class="input" type="text" placeholder="Firstname" v-model="firstname" />
             </div>
         </div>
 
         <div class="field">
             <label class="label">Lastname</label>
             <div class="control">
-                <input class="input" type="text" placeholder="lastname" v-model="lastname" />
+                <input class="input" type="text" placeholder="Lastname" v-model="lastname" />
             </div>
         </div>
 
@@ -40,6 +38,7 @@
 
         <div class="control">
             <button class="button is-success" @click="createUser">Register</button>
+            <button class="button register" @click="goToLogin">Login</button>
         </div>
     </div>
 </template>
@@ -101,3 +100,54 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.field{
+    padding-top: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #1E3551;
+    margin-bottom: 4px;
+    align-items: center;
+}
+.register{
+    position: relative;
+    z-index: 1;
+    background:#f4f4f1;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    border-radius : 2%;
+    /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+    box-shadow: rgba(30, 53, 81, 0.212) 0px 0px 0px 2px, rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    /* outline: 0; */
+    background-color: #1E3551;
+    width: 25%;
+    border: 0;
+    padding: 15px;
+    color:#f4f4f1;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer; 
+    margin-right: 10px;  
+    margin-left: 10px;  
+}
+.labelTitle{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #1E3551;
+    margin-bottom: 70px;
+    padding-bottom: 60px;
+    font-size: 25px;
+}
+.input{
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+</style>
