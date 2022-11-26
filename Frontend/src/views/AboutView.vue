@@ -2,14 +2,32 @@
   <MyHeader></MyHeader>
   <div class="about">
 
-    <div class="" id="DivPersonnes">
+    <div class="" id="DivPersonnes" style="padding-top : 60px">
       <img src="@/assets/cuisine1.jpg" alt="" class="cuisine">
       <div class="TextDivPersonnes">
-        <p class="BigTextBlue" style="text-align: justify">Chef Chang</p>
-        <p class="MiddleTextBlue">Brilliantly, he creates an instinctive, inspired and vibrantly modern style of
-          cuisine. At Le Manoir Salé, there is no settled menu, but rather a variety of dishes based on exceptional and
-          seasonal products. The land-sea associations, dear to the chef, are sublimated during each “sequence” of the
-          meal by a myriad of satellite plates with marked flavours.</p>
+        <p class="BigTextBlue" style="text-align : left">The cuisine</p>
+        <p class="MiddleTextBlue">A cuisine of excellence distinguished by exceptional quality, freshness of our products,
+          and a willingness by our chefs to advance the world of gastronomy. This same gastronomy respected and approved
+          by the greatest critics of world fame.</p>
+      </div>
+    </div>
+
+    <div class="reveal fade-bottom" id="DivPersonnes2">
+      <div class="TextDivPersonnes2">
+        <p class="BigTextBlue" style="text-align : right">Our Wines</p>
+        <p class="MiddleTextBlue">In the cellar of Le Manoir salé restaurant, prestigious wines and those of extremely 
+          limited production stand happily side by side. The wine list reveals all the abundance, history and diversity
+          of the French winegrowing regions. </p>
+      </div>
+      <img src="@/assets/vin1.jpg" alt="" class="chefPic2"   style="margin-top: -260px">
+    </div>
+
+    <div class="reveal fade-bottom" id="DivPersonnes" style="margin-top : -100px">
+      <img src="@/assets/table1.jpg" alt="" class="cuisine" style="margin-top : -60px">
+      <div class="TextDivPersonnes">
+        <p class="BigTextBlue" style="text-align: justify">An experience</p>
+        <p class="MiddleTextBlue">Excellence and conviviality come together in the restaurant. Service at Le Manoir Salé,
+          knowing and discreet, does its utmost to make a meal a pure moment of pleasure, relaxation and even discovery.</p>
       </div>
     </div>
 
@@ -106,18 +124,17 @@ body {
 
 
 #DivPersonnes {
-  margin-bottom: 100px;
   margin-left: 20px;
-  padding: 60px;
+  padding: 0px 60px 0px 60px;
   height: 500px;
   background-color: white;
   color: #1E3551;
 }
 
 #DivPersonnes2 {
-  padding: 60px;
+  margin-bottom: 60px;
+  padding: 0px 60px 0px 60px;
   margin-right: 20px;
-  padding-top: 60px;
   height: 500px;
   background-color: white;
   color: #1E3551;
@@ -136,6 +153,7 @@ body {
 }
 
 .cuisine {
+  padding-top : 30px;
   width: 400px;
   float: left;
   display: block;
@@ -149,7 +167,6 @@ body {
 }
 
 section .container {
-  margin: 100px;
 }
 
 section h2 {

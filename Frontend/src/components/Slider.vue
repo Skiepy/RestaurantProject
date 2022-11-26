@@ -27,7 +27,7 @@ export default {
 
   methods: {
     startSlide: function() {
-      this.timer = setInterval(this.next, 2000);
+      this.timer = setInterval(this.next, 3000);
     },
 
     next: function() {
@@ -45,7 +45,7 @@ export default {
   }}
 </script>
 
-<style>
+<style scoped>
 
 /* .fade-enter-active,
 .fade-leave-active {
@@ -66,8 +66,13 @@ export default {
   padding-bottom: 20%;
 } */
 
+template{
+  text-align : center;
+}
+
 img {
-  width:60%;
+  width:600px;
+  margin-bottom : 100px;
 }
 
 .prev, .next {
@@ -93,7 +98,4 @@ img {
   left: 0;
 }
 
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.9);
-}
 </style>

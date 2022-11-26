@@ -19,6 +19,7 @@
           meal by a myriad of satellite plates with marked flavours.</p>
       </div>
     </div>
+    
     <div class="reveal fade-bottom" id="DivPersonnes2">
       <div class="TextDivPersonnes2">
         <p class="BigTextBlue" style="text-align : right">Chef Etchebest</p>
@@ -30,9 +31,9 @@
     </div>
 
     <section>
-      <div class="container reveal fade-bottom">
+      <div class="reveal fade-bottom">
         <div id="slides">
-          <p class="BigTextBlue2">Enjoy our meals</p>
+          <p class="BigTextBlue" style="padding-top : 80px">Our Signature Meals</p>
           <Slider></Slider>
         </div>
       </div>
@@ -55,7 +56,7 @@ export default {
 
   methods: {
     gototop() {
-      window.scroll(0,0);
+      window.scrollTo(0,0);
     }
   },
 };
@@ -208,10 +209,8 @@ section .text-container .text-box {
 }
 
 .slides {
-  padding-left: 2000px;
-  padding-right: 2000px;
-  margin-bottom: 20%;
-  margin-top: 20%;
+  padding-bottom: 20%;
+  padding-top: 20%;
   align-items: center;
 }
 
