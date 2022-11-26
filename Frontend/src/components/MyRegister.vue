@@ -105,7 +105,7 @@ export default {
 .field{
     padding-top: 20px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #1E3551;
+    color:  #dbb172;;
     margin-bottom: 4px;
     align-items: center;
 }
@@ -126,8 +126,7 @@ export default {
 .button{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-transform: uppercase;
-    /* outline: 0; */
-    background-color: #1E3551;
+    background-color:  #dbb172;
     width: 25%;
     border: 0;
     padding: 15px;
@@ -139,9 +138,13 @@ export default {
     margin-right: 10px;  
     margin-left: 10px;  
 }
+.button:hover {
+  color:  #1E3551;
+  text-decoration: none;
+}
 .labelTitle{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #1E3551;
+    color:  #dbb172;
     margin-bottom: 70px;
     padding-bottom: 60px;
     font-size: 25px;
@@ -149,5 +152,9 @@ export default {
 .input{
     padding-top: 5px;
     padding-bottom: 3px;
+}
+.input:hover {
+  color:  #1E3551;
+  text-decoration: none;
 }
 </style>
