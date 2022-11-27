@@ -1,7 +1,6 @@
 <template>
     <div class="booking">
-        <label class="labelTitle">Booking</label>
-        <button class="button register" @click="logOut">Log Out</button>
+        <label class="labelTitle">BOOKING</label>
         <button class="button register" @click="back">Go Back</button>
         <div class="field">
             <label class="label">Firstname</label>
@@ -138,6 +137,61 @@
     </div>
 </template>
 
+<style scoped>
+.labelTitle{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #1E3551;
+    margin-bottom: 70px;
+    padding-bottom: 60px;
+    font-size: 25px;
+    margin: 100px;
+    margin-bottom: 20px;
+}
+.field{
+    padding-top: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #1E3551;
+    margin-bottom: 4px;
+    align-items: center;
+}
+.button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    background-color: #1E3551;
+    width: 25%;
+    border: 0;
+    padding: 15px;
+    color:white;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer; 
+    margin-right: 10px;  
+    margin-left: 10px;  
+    border-radius : 10%;
+}
+.button:hover {
+  color: #dbb172;
+  text-decoration: none;
+}
+.booking{
+    position: relative;
+    z-index: 1;
+    background:#f4f4f1;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    border-radius : 2%;
+    /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+    box-shadow: rgba(55, 153, 148, 0.397) 0px 0px 0px 2px, rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.control:hover{
+    color:#dbb172;
+}
+</style>
 <script>
 // import axios
 import axios from 'axios';
@@ -166,9 +220,6 @@ export default {
         };
     },
     methods: {
-        logOut() {
-            this.$emit('connected');
-        },
         back() {
             this.$emit('back');
         },
