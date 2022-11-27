@@ -46,6 +46,9 @@ export default {
 
   components: {
     MyHeader, MyFooter
+  },
+  mounted() {
+    window.scrollTo(0, 0);
   }
 }
 </script>
@@ -164,9 +167,6 @@ body {
   display: flex;
   float: right;
   margin-top: -300px;
-}
-
-section .container {
 }
 
 section h2 {

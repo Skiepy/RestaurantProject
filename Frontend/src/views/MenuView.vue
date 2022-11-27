@@ -1,36 +1,36 @@
 <template>
     <MyHeader></MyHeader>
     <div class="menu">
-        <img src="@/assets/31046_menu-border-png.png" alt="" class="cadre">   
+        <img src="@/assets/31046_menu-border-png.png" alt="" class="cadre">
         <div class="plats">
-        <p class="title" style="margin-top : 30px">APPETIZER</p>
-        <p class="titre">Oysters // Sabayon of pearls tapioca</p>
+            <p class="title" style="margin-top : 30px">APPETIZER</p>
+            <p class="titre">Oysters // Sabayon of pearls tapioca</p>
         </div>
         <img src="@/assets/paragraph-divider-23.png" alt="" class="divider">
         <div class="plats">
-        <p class="title">STARTERS</p>
-        <p class="titre">Pâté en crôute</p>
-        <p class="details">home made pickles, kumquat, eggplant brûlée</p>
-        <p class="titre">Roasted Veal Head</p>
-        <p class="details">big deep-fried langoustine with mustard's bran by bouillon mousse, gribiche sauce</p>
+            <p class="title">STARTERS</p>
+            <p class="titre">Pâté en crôute</p>
+            <p class="details">home made pickles, kumquat, eggplant brûlée</p>
+            <p class="titre">Roasted Veal Head</p>
+            <p class="details">big deep-fried langoustine with mustard's bran by bouillon mousse, gribiche sauce</p>
         </div>
         <img src="@/assets/paragraph-divider-23.png" alt="" class="divider">
         <div class="plats">
-        <p class="title">MAIN COURSE</p>
-        <p class="titre">Grilled 'Japanese Wagyu' sirloin</p>
-        <p class="details">seasonal vegetables, red wine sauce with casis</p>
-        <p class="titre">Green Seabass</p>
-        <p class="details">green vegetables, artichoke, Bouillabaisse sauce with safran</p>
+            <p class="title">MAIN COURSE</p>
+            <p class="titre">Grilled 'Japanese Wagyu' sirloin</p>
+            <p class="details">seasonal vegetables, red wine sauce with casis</p>
+            <p class="titre">Green Seabass</p>
+            <p class="details">green vegetables, artichoke, Bouillabaisse sauce with safran</p>
         </div>
         <img src="@/assets/paragraph-divider-23.png" alt="" class="divider">
         <div class="plats">
-        <p class="title">DESERT</p>
-        <p class="titre">Chef's inspiration</p>
+            <p class="title">DESERT</p>
+            <p class="titre">Chef's inspiration</p>
         </div>
         <img src="@/assets/paragraph-divider-23.png" alt="" class="divider">
         <div class="plats">
-        <p class="title">WINE</p>
-        <p class="titre">Reisling, Chardonnay // Mary Rivers, Pinot Noir, Sonoma Coast</p>
+            <p class="title">WINE</p>
+            <p class="titre">Reisling, Chardonnay // Mary Rivers, Pinot Noir, Sonoma Coast</p>
         </div>
     </div>
     <div></div>
@@ -43,11 +43,14 @@ import MyHeader from '@/components/MyHeader.vue';
 import MyFooter from '@/components/MyFooter.vue';
 
 export default {
-  name: 'HomePage',
+    name: 'HomePage',
 
-  components: {
-    MyHeader, MyFooter
-  }
+    components: {
+        MyHeader, MyFooter
+    },
+    mounted() {
+        window.scrollTo(0, 0);
+    }
 }
 </script>
 
@@ -56,21 +59,22 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Elsie:wght@900&display=swap');
 
-.menu{
+.menu {
     padding-top: 5%;
-    border-width:1px;
-    border-style:outset;
-    border-color: #dbb172;  
+    border-width: 1px;
+    border-style: outset;
+    border-color: #dbb172;
     background-color: #f4f4f1;
     padding-bottom: 15%;
 }
-.cadre{
-    right : 20%;
+
+.cadre {
+    right: 20%;
     position: absolute;
     width: 60%;
 }
 
-h1 { 
+h1 {
     padding-bottom: 10px;
     margin-bottom: 30px;
     font-size: 30px;
@@ -81,33 +85,36 @@ h1 {
 
 }
 
-.details{
+.details {
     font-family: papyrus;
     font-size: 20px;
     align-items: center;
-    color:rgba(0, 0, 0, 0.356);
+    color: rgba(0, 0, 0, 0.356);
 }
 
-.titre{
+.titre {
     padding-left: 2px;
     padding-bottom: 2px;
     margin-bottom: 2px;
     font-family: 'Great Vibes', cursive;
     font-size: 20px;
     align-items: center;
-    color:rgba(0, 0, 0, 0.633);
+    color: rgba(0, 0, 0, 0.633);
 }
-.plats{
+
+.plats {
     margin-left: 30px;
     margin-right: 30px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.divider{
+
+.divider {
     padding-top: 20px;
     width: 5%;
 }
-.title{
+
+.title {
     padding-top: 20px;
     font-family: 'Elsie', cursive;
     font-size: 20px;

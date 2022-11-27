@@ -6,7 +6,7 @@
       <nav id="header-nav">
 
         <div id="tab-links">
-          <router-link class="rl" @click="top()" to="/">HOME </router-link> |
+          <router-link class="rl" to="/">HOME </router-link> |
           <router-link class="rl" to="/menu">MENU </router-link>
         </div>
 
@@ -28,9 +28,6 @@ export default {
   name: 'MyHeader',
 
   methods: {
-    top(){
-      this.$emit("top");
-    }
   },
 
 }

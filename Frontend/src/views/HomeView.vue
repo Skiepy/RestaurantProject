@@ -1,6 +1,6 @@
 <template>
   <div class="homePage">
-    <MyHeader @top="gototop()"></MyHeader>
+    <MyHeader></MyHeader>
     <div>
       <video autoplay muted loop plays-inline id="myVideo" class="back-video">
         <source src="@/assets/video/fond_manoir_sale.mp4" type="video/mp4">
@@ -19,7 +19,7 @@
           meal by a myriad of satellite plates with marked flavours.</p>
       </div>
     </div>
-    
+
     <div class="reveal fade-bottom" id="DivPersonnes2">
       <div class="TextDivPersonnes2">
         <p class="BigTextBlue" style="text-align : right">Chef Etchebest</p>
@@ -53,12 +53,9 @@ export default {
   components: {
     MyFooter, MyHeader, Slider
   },
-
-  methods: {
-    gototop() {
-      window.scrollTo(0,0);
-    }
-  },
+  mounted() {
+    window.scrollTo(0, 0);
+  }
 };
 
 
@@ -238,5 +235,4 @@ section .text-container .text-box {
     opacity: 1;
   }
 }
-
 </style>
