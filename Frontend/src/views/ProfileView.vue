@@ -20,19 +20,25 @@
         <div class="book" v-if="nbBooking > 0">
             <label class="bookt" v-if="nbBooking == 1">MY BOOKING: </label>
             <label class="bookt" v-if="nbBooking > 1">MY BOOKINGS: </label>
-            <tr class="line" v-for="item in myItems" :key="item.booking_id">
-                <td>{{ item.lastname }}</td>
-                <td>{{ item.nbPeople }}</td>
-                <td>{{ item.menu }}</td>
-                <td>{{ item.date }}</td>
-                <td>
-                    <button>
-                        <RouterLink class="link" :to="{ name: 'updateBooking', params: { id: item.booking_id } }">Edit
-                            booking</RouterLink>
-                    </button>
-                    <button @click="deleteBooking(item.booking_id)">DELETE</button>
+            <table>
+                <td class="line" v-for="title in header" :key="title.id">
+                    <th>{{title}}</th>
                 </td>
-            </tr>
+                <tr class="line" v-for="item in myItems" :key="item.booking_id">
+                    <td>{{ item.lastname }}</td>
+                    <td>{{ item.nbPeople }}</td>
+                    <td>{{ item.menu }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>
+                        <button>
+                            <RouterLink class="link" :to="{ name: 'updateBooking', params: { id: item.booking_id } }">
+                                Edit
+                                booking</RouterLink>
+                        </button>
+                        <button @click="deleteBooking(item.booking_id)">DELETE</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
     <div class="bottom">
@@ -46,6 +52,23 @@
 </template>
 
 <style scoped>
+th{
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+td{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+table{
+    padding-top: 50px;
+    padding-bottom: 100px;
+    
+    padding-right: 190px;
+    text-align: center;
+}
 .link {
     text-decoration: none;
     color: white
@@ -222,7 +245,8 @@ export default {
             booking: "0",
             modifProfile: "0",
             items: [],
-            myItems: []
+            myItems: [],
+            header: ["Reservation Name", "Number of People", "Your Menu", "Date and Time of Reservation"]
         };
     },
     methods: {
