@@ -1,7 +1,8 @@
 <template>
     <div v-if="booking == 0">
-        <h2>Welcome back {{ firstname }} !</h2>
         <button class="button1 logOut" @click="logOutUser()">Home</button>
+        <button class="button1 logOut" @click="logOutUser()">Log Out </button>
+        <h2>Welcome back {{ firstname }} !</h2>
         <div class="details">
             <h1>PROFILE</h1>
         <label>Firstname :</label>
@@ -12,22 +13,21 @@
         <p>{{ phoneNumber }}</p>
         <label>Number of bookings :</label>
         <p>{{ nbBooking }}</p>
+        <button class="button booking" @click="goToBooking">Make a booking</button>
+        <button class="button modProfile" @click="goToModifProfile">Modify Profile</button> 
     </div>
         <br>
-        <button class="button booking" @click="goToBooking">Make a booking</button>
-        <button class="button modProfile" @click="goToModifProfile">Modify Profile</button>
-        <button class="button logOut" @click="logOutUser()">Log Out </button>
-        <div v-if="nbBooking > 0">
-            <label v-if="nbBooking == 1">My booking</label>
-            <label v-if="nbBooking > 1">My bookings</label>
-            <tr v-for="item in myItems" :key="item.booking_id">
+        <div class="book" v-if="nbBooking > 0">
+            <label class="bookt" v-if="nbBooking == 1">MY BOOKING: </label>
+            <label class="bookt" v-if="nbBooking > 1">MY BOOKINGS: </label>
+            <tr class="line" v-for="item in myItems" :key="item.booking_id">
                 <td>{{ item.lastname }}</td>
                 <td>{{ item.nbPeople }}</td>
                 <td>{{ item.menu }}</td>
                 <td>{{ item.date }}</td>
                 <td>
                     <button>
-                        <RouterLink :to="{ name: 'updateBooking', params: { id: item.booking_id } }">Edit booking</RouterLink>
+                        <RouterLink class= "link" :to="{ name: 'updateBooking', params: { id: item.booking_id } }">Edit booking</RouterLink>
                     </button>
                     <button @click="deleteBooking(item.booking_id)">DELETE</button>
                 </td>
@@ -45,7 +45,47 @@
 </template>
 
 <style scoped>
+.link{
+    text-decoration: none;
+    color: white
+}
+.link:hover{
+    color:#1E3551;
+}
+.bookt{
+    color: #1E3551;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-right: 25%;
+    font-size: 25px;
+}
+.line{
+    margin-right: 40%;
+    color: #1E3551;
+}
+.book{
+    align-items: center;
+    margin-left: 20%;
+}
 
+button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    background-color:#dbb172;
+    width: 40%;
+    border: 0;
+    padding: 15px;
+    color:white;
+    font-size: 15px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer; 
+    margin-right: 80px;  
+    margin-left: 10px;  
+    border-radius : 10%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
 h1{
     font-size: 25px;
     color: #1E3551;
@@ -54,10 +94,11 @@ h1{
 }
 
 h2{
-    font-size: 30px;
+    font-size: 32px;
     color: #dbb172;
     font-family:'Times New Roman', Times, serif;
     font-style: italic;
+    margin-bottom: 2%;
 }
 
 label{
@@ -79,16 +120,17 @@ p{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-transform: uppercase;
     background-color:#dbb172;
-    width: 5%;
+    width: 7%;
     border: 0;
     padding: 15px;
     color:white;
-    font-size: 15px;
+    font-size: 12   px;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer; 
     margin-right: 10px;  
     margin-left: 10px;  
+    margin-top: 1%;
     border-radius : 10%;
 }
 .button1:hover {
@@ -99,7 +141,7 @@ p{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-transform: uppercase;
     background-color: #1E3551;
-    width: 7%;
+    width: 25%;
     border: 0;
     padding: 15px;
     color:white;
@@ -115,22 +157,6 @@ p{
   color: #dbb172;
   text-decoration: none;
 }
-button{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-transform: uppercase;
-    background-color:#dbb172;
-    width: 40%;
-    border: 0;
-    padding: 15px;
-    color:white;
-    font-size: 15px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer; 
-    margin-right: 10px;  
-    margin-left: 10px;  
-    border-radius : 10%;
-}
 button:hover{
     color:#1E3551;
 }
@@ -145,9 +171,10 @@ button:hover{
     border-radius : 2%;
     /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
     box-shadow: rgba(30, 53, 81, 0.212) 0px 0px 0px 2px, rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-    margin-top: 5%;
+    margin-top: 1%;
     margin-bottom: 5%;
 }
+
 
 </style>
 

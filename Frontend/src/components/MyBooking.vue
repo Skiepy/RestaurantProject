@@ -87,9 +87,9 @@
             <label class="label">Any allergies ?</label>
             <div class="control">
                 <input type="radio" v-model="specialAllergies" value="1">
-                <label>yes</label><br>
+                <label class="label1">yes</label><br>
                 <input type="radio" v-model="specialAllergies" value="0">
-                <label>no</label><br>
+                <label class="label2">no</label><br>
             </div>
         </div>
 
@@ -104,9 +104,9 @@
             <label class="label">Any specific diet ?</label>
             <div class="control">
                 <input type="radio" v-model="specialDiet" value="1">
-                <label>yes</label><br>
+                <label class="label1">yes</label><br>
                 <input type="radio" v-model="specialDiet" value="0">
-                <label>no</label><br>
+                <label class="label2">no</label><br>
             </div>
         </div>
 
@@ -125,9 +125,9 @@
             <label class="label">Would you like to be in the smoking area ?</label>
             <div class="control">
                 <input type="radio" v-model="smoking" value="1">
-                <label>yes</label><br>
+                <label class="label1">yes</label><br>
                 <input type="radio" v-model="smoking" value="0">
-                <label>no</label><br>
+                <label class="label2">no</label><br>
             </div>
         </div>
 
@@ -188,8 +188,11 @@
     margin-top: 5%;
     margin-bottom: 5%;
 }
-.control:hover{
-    color:#dbb172;
+.label2:hover{
+    color: #dbb172;
+}
+.label1:hover{
+    color: #dbb172;
 }
 </style>
 <script>
