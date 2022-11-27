@@ -16,7 +16,7 @@
         <br>
         <button class="button booking" @click="goToBooking">Make a booking</button>
         <button class="button modProfile" @click="goToModifProfile">Modify Profile</button>
-        <button class="button logOut" @click="logOutUser()">Log Out</button>
+        <button class="button logOut" @click="logOutUser()">Log Out </button>
         <div v-if="nbBooking > 0">
             <label v-if="nbBooking == 1">My booking</label>
             <label v-if="nbBooking > 1">My bookings</label>
@@ -89,7 +89,7 @@ p{
     cursor: pointer; 
     margin-right: 10px;  
     margin-left: 10px;  
-    border-radius : 30%;
+    border-radius : 10%;
 }
 .button1:hover {
   color:#1E3551;
@@ -129,7 +129,7 @@ button{
     cursor: pointer; 
     margin-right: 10px;  
     margin-left: 10px;  
-    border-radius : 30%;
+    border-radius : 10%;
 }
 button:hover{
     color:#1E3551;
@@ -148,11 +148,7 @@ button:hover{
     margin-top: 5%;
     margin-bottom: 5%;
 }
-.bottom{
-    padding-left: 2000px;
-    padding-right: 2000px;
-    margin-left: 40%;
-}
+
 </style>
 
 <script>

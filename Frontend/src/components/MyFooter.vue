@@ -19,7 +19,7 @@
                   <div>      </div>
                     <div class="col-sm-4 col-md-3 item">
                         <h3>BOOK A TABLE</h3>
-                            <ul><li><a><router-link to="http://www.manoir-aulnay.com/">CONTACT US</router-link></a></li></ul>
+                            <ul><li><a href="http://www.manoir-aulnay.com/" target="_blank">CONTACT US</a></li></ul>
                     </div>
                     <div class="vl"></div>
                     <div class="col-sm-4 col-md-3 item">
