@@ -30,7 +30,7 @@
                     </div>
                     <div class="vl"></div>
                     <div class="col-sm-4 col-md-3 item">
-                        <h3>NEW CONCEPT</h3>
+                        <h3>WHO ARE WE ?</h3>
                             <ul><li><a><router-link to="/about">LEARN MORE ABOUT US</router-link></a></li></ul>
                     </div>
                     <div></div>                 
